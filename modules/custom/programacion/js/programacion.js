@@ -98,10 +98,77 @@ function test_for() {
 (function ($) {
     $(document).ready(function () {
 
+
+        //$("#cuadrado5").hover(function(){
+         //   console.alert("click");
+           // $("this").css({'right':'20px'});
+           // });
         //agarrar el elemento y ponerle la funcion hever
         //codigo.....
         //cuando tenga al elemento le cambio la posicion del top y del left ,buscar como cambiar atributo top o atributo left en jquery
         // $('.ELEMENTO').css('top', 100px)
+
+       
+
+
+
+        $( "#boton" ).click(function() {
+            $("#cuadrado5").animate({
+                left: '+=25px',
+                height: '+=15px',
+                width: '+=15px'
+           });
+         });
+        //$( "#cuadrado5" ).click(function() {
+            //$('this').css({
+             // left: "+=100",
+           // });
+         // });
+       
+       
+       
+        $("#cuadrado4").hover(function(){
+            console.log("hover");
+            $("#cuadrado4").animate({marginLeft: "200"});
+    
+             });
+             $("#cuadrado4").mouseleave(function(){
+    
+             $("#cuadrado4").animate({marginLeft: "0"});
+             });
+       
+       
+       
+        //$("#cuadrado5").hover(function(){
+           // $("this").css({'right':'20px'});
+           // });
+        //agarrar el elemento y ponerle la funcion hever
+        //codigo.....
+        //cuando tenga al elemento le cambio la posicion del top y del left ,buscar como cambiar atributo top o atributo left en jquery
+        // $('.ELEMENTO').css('top', 100px)
+       
+       
+        //$("#cuadrado5").click(function(){
+            //$('this').css({
+              //  'right':'100px',
+              //  'left': 'auto'
+              // });
+            //});
+
+        
+   
+        var cuadrado6Width = $("#cuadrado6").width();
+            $("#cuadrado6").mouseenter(function(){
+                $(this).animate({
+                    width: "400"
+                });
+            }).mouseleave(function(){
+                $(this).animate({
+                    width: cuadrado6Width
+                });
+            });
+        
+
         $("#alternar").click(function () {
             $('.pos').each(function (index) {
                 var self = this;
