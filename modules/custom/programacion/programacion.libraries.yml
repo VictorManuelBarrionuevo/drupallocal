@@ -1,0 +1,9 @@
+programacion-testjs-library:
+  version: 1.x
+  css:
+    theme:
+      css/programacion.css: {}
+  js:
+    js/programacion.js: {}
+  dependencies:
+  - core/jquery

@@ -1,0 +1,7 @@
+programacion.test1:
+  path: '/programacion/test1'
+  defaults:
+    _controller: '\Drupal\programacion\Controller\ProgramacionController::test1'
+    _title: 'Test 1'
+  requirements:
+    _permission: 'access content'

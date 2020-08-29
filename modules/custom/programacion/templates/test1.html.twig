@@ -1,0 +1,60 @@
+{# [module]/templates/my-template.html.twig #}
+<p>test 1 programacion!</p>
+ 
+<p>Numero random: {{ test_var }}</p>
+
+<input type="text" id="input1" class="clear" name="input1" onKeyUp="str_validate(event.keyCode)">
+
+<button onclick="calculate()">=</button>
+<button onclick="clearNumbers()">C</button>
+
+<div>
+    <button onclick="writeNumber(1)">1</button>
+    <button onclick="writeNumber(2)">2</button>
+    <button onclick="writeNumber(3)">3</button>
+    <button onclick="writeNumber('+')">+</button>
+</div>
+<div>
+    <button onclick="writeNumber(4)">4</button>
+    <button onclick="writeNumber(5)">5</button>
+    <button onclick="writeNumber(6)">6</button>
+    <button onclick="writeNumber('-')">-</button>
+</div>
+<div>
+    <button onclick="writeNumber(7)">7</button>
+    <button onclick="writeNumber(8)">8</button>
+    <button onclick="writeNumber(9)">9</button>
+</div>
+
+<div>
+
+<div class="inputs-container">
+    <div>
+        <input type="text" id="1" class="posicion1 pos" name="1">
+        <input type="text" id="2" class="posicion2 pos" name="2">
+        <input type="text" id="3" class="posicion3 pos float-right" name="3">
+    </div>
+    <div>
+        <input type="text" id="4" class="posicion4 pos" name="4">
+        <input type="text" id="5" class="posicion5 pos float-right" name="5">
+    </div>
+    <div>
+        <input type="text" id="6" class="posicion6 pos" name="6">
+        <input type="text" id="7" class="posicion7 pos float-right" name="7">
+    </div>
+    <div>
+        <input type="text" id="8" class="posicion8 pos" name="8">
+        <input type="text" id="9" class="posicion9 pos" name="9">
+        <input type="text" id="10" class="posicion8 pos float-right" name="10">
+    </div>
+</div>
+<button id="alternar">ALTERNAR</button>
+</div>
+
+
+
+<button onclick="test_for()">test for</button>
+<button onclick="cambiar_tamanio()" id="boton_id" class="boton_class">CAMBIAR TAMANIO</button>
+<div id="cuadrado1" class="cuadrado color_rojo">Cuadrado 1</div>
+<div id="cuadrado2" onmouseover="move_this(this)" class="cuadrado color_verde">Cuadrado 2</div>
+<div id="cuadrado3" onmouseover="move_this(this)" class="cuadrado color_amarillo">Cuadrado 3</div>

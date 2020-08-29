@@ -1,0 +1,40 @@
+.color_rojo {
+    transition: 300ms linear;
+    background-color: red;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+}
+
+.color_verde {
+    background-color: green;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+}
+
+.color_amarillo {
+    background-color: yellow;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.color_amarillo:hover {
+    background-color: black;
+}
+
+.float-right{
+    float: right;
+}
+
+.inputs-container{
+    width: 536px;
+}
