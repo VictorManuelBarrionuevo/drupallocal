@@ -38,3 +38,26 @@
 .inputs-container{
     width: 536px;
 }
+
+.color_negro{
+    background-color: blue;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+   
+}
+.caja{
+    left:5px;
+    position:relative;
+    width:100px;
+    height:100px;
+    background:rgb(100,200,0)
+
+}    
+.box{
+    width: 200px;
+    height: 150px;
+    background: #c038a9;
+    border: 1px solid #a29415;
+}
+    

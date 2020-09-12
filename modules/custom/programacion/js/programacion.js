@@ -98,10 +98,43 @@ function test_for() {
 (function ($) {
     $(document).ready(function () {
 
-        //agarrar el elemento y ponerle la funcion hever
-        //codigo.....
-        //cuando tenga al elemento le cambio la posicion del top y del left ,buscar como cambiar atributo top o atributo left en jquery
-        // $('.ELEMENTO').css('top', 100px)
+        $("#boton").click(function () {
+            $("#cuadrado5").animate({
+                left: '+=25px',
+                height: '+=15px',
+                width: '+=15px'
+            });
+        });
+
+        $("#cuadrado4").hover(function () {
+            console.log("hover");
+            $("#cuadrado4").animate({ marginLeft: "200" });
+
+        });
+
+        $("#cuadrado4").mouseleave(function () {
+        //test
+            $("#cuadrado4").animate({ marginLeft: "0" });
+        });
+
+        $("#cuadrado5").hover(function () {
+            var x = $("#cuadrado5").position();
+            var nevapos = x.left + 20;
+            nevapos = nevapos + 'px';
+            $("#cuadrado5").css({ 'left': nevapos });
+        });
+
+        window.cuadrado6Width = $("#cuadrado6").width();
+        $("#cuadrado6").mouseenter(function () {
+            $(this).animate({
+                width: "400"
+            });
+        }).mouseleave(function () {
+            $(this).animate({
+                width: cuadrado6Width
+            });
+        });
+
         $("#alternar").click(function () {
             $('.pos').each(function (index) {
                 var self = this;
@@ -113,9 +146,9 @@ function test_for() {
                     //calcular la id de la siguiente posicion
                     var next_id = parseInt(id_pos) + 1;
                     //guardar en el siguiente elemento el texto
-                    $('#'+next_id).val(input_text);
+                    $('#' + next_id).val(input_text);
                     //borrar el texto del campo actual
-                    $('#'+id_pos).val('');
+                    $('#' + id_pos).val('');
                 }, index * 1000);
             });
         });
