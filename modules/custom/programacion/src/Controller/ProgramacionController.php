@@ -22,11 +22,15 @@ class ProgramacionController
      */
     public function test1()
     {
+        $database = \Drupal::database();
+        $result = $database->query("SELECT programacion_value FROM programacion where id = 5")->fetch();
+        $color = $result->programacion_value;
+
         $num_random = rand(5, 15);
         return [
             '#theme' => 'test1',
             '#test_var' => $num_random,
+            '#color' => $color
         ];
-
     }
 }
