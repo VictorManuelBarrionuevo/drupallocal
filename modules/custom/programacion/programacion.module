@@ -16,9 +16,9 @@ function programacion_page_attachments(array &$attachments)
  */
 function programacion_theme($existing, $type, $theme, $path)
 {
-    return [
-        'test1' => [
-            'variables' => ['test_var' => NULL],
-        ],
+    $themes['theme_test1'] = [
+        'template' => 'test1',
+        'variables' => array('array_vars' => NULL),
     ];
+    return $themes;
 }

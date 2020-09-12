@@ -5,3 +5,11 @@ programacion.test1:
     _title: 'Test 1'
   requirements:
     _permission: 'access content'
+
+programacion.test2:
+  path: '/programacion/savetexto'
+  defaults:
+    _controller: '\Drupal\programacion\Controller\ProgramacionController::guardartexto'
+    _title: 'Test 2'
+  requirements:
+    _permission: 'access content'

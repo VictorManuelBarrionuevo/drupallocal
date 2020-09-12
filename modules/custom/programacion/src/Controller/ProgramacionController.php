@@ -23,14 +23,46 @@ class ProgramacionController
     public function test1()
     {
         $database = \Drupal::database();
-        $result = $database->query("SELECT programacion_value FROM programacion where id = 5")->fetch();
+        $result = $database->query("SELECT programacion_value FROM programacion where id = 2")->fetch();
         $color = $result->programacion_value;
-
+        
         $num_random = rand(5, 15);
+
+        $array_vars = [];
+        $array_vars['num_random'] = $num_random;
+        $array_vars['color'] = $color;
+
         return [
-            '#theme' => 'test1',
-            '#test_var' => $num_random,
-            '#color' => $color
+            '#theme' => 'theme_test1',
+            '#array_vars' => $array_vars
         ];
     }
+
+    public function guardartexto()
+    {
+        $db = \Drupal::database();
+        $text = $_POST['inputtexto'];
+
+        /*$db->update('programacion')->condition('id' , '4')
+        ->updateFields([
+            'programacion_value' => $text
+        ])
+        ->execute();*/
+
+
+
+
+
+
+        print_r('nuevo valor: ');
+        print_r($text);
+        //die();
+
+
+
+
+        $db->query("UPDATE `drupaldb`.`programacion` SET `programacion_value` = '$text' WHERE (`id` = '4');")->execute();
+    }
+
+
 }
