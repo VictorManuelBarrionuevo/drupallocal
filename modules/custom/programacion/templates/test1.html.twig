@@ -1,19 +1,23 @@
-<p>Color:
-	{{array_vars.color}}
-</p>
-<p>Numero random:
-	{{array_vars.num_random}}
+<p>Result:
+	{% for alumno in array_vars.alumnos %}
+		<li>{{ alumno }}</li>
+	{% endfor %}
 </p>
 
 
-<form action="/programacion/savetexto" method="post">
-	<label for="inputtexto">Introducir Texto:</label>
-	<input type="text" id="inputtexto" class="clear" name="inputtexto"/>
-	<input type="submit" value="Guardar"/>
+<form action="/programacion/test1" method="get">
+	<label for="grado">Grado:</label>
+	<input type="text" id="grado" class="clear" name="grado"/>
+	<label for="maestro_id">Maestro id:</label>
+	<input type="text" id="maestro_id" class="clear" name="maestro_id"/>
+	<input type="submit" value="Buscar"/>
 </form>
 
 
-<input type="text" id="input1" class="clear" name="input1" onkeyup="str_validate(event.keyCode)">
+<!--p>Numero random:
+	{#{array_vars.num_random}#}
+</p-->
+<!--input type="text" id="input1" class="clear" name="input1" onkeyup="str_validate(event.keyCode)">
 <button onclick="calculate()">=</button>
 <button onclick="clearNumbers()">C</button>
 
@@ -69,7 +73,7 @@
 <div id="cuadrado4" class="cuadrado color_negro">Cuadrado 4</div>
 <div id="cuadrado5" class="cuadrado caja">caja</div>
 <div id="cuadrado6" class="cuadrado box">caja</div>
-<button id="boton">boton prueba</button>
+<button id="boton">boton prueba</button-->
 
 
 {# [module]/templates/my-template.html.twig #}

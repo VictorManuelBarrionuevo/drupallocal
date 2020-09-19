@@ -22,15 +22,41 @@ class ProgramacionController
      */
     public function test1()
     {
+        
         $database = \Drupal::database();
-        $result = $database->query("SELECT programacion_value FROM programacion where id = 2")->fetch();
-        $color = $result->programacion_value;
+        if(isset($_GET['grado'])){
+            $grado = $_GET['grado'];
+        } else {
+            $grado = 1;
+        }
+        if(isset($_GET['grado'])){
+            $maestro_id = $_GET['maestro_id'];
+        } else {
+            $maestro_id = 1;
+        }
+        
+        $query = "select a.nombre, a.apellido from alumno a
+                inner join maestro m on a.maestro_id = m.id
+                where grado = $grado
+                and maestro_id = $maestro_id;";
+
+        $alumnos = $database->query($query)->fetchAll();
+
+        
+
+        foreach ($alumnos as $alumno) {
+             $alumnos_a_mostrar[] = $alumno->nombre . ' ' . $alumno->apellido;
+        }
+        /*print_r('<PRE>');
+        print_r($alumnos_a_mostrar);
+        print_r('<PRE>');
+        die();*/
         
         $num_random = rand(5, 15);
 
         $array_vars = [];
         $array_vars['num_random'] = $num_random;
-        $array_vars['color'] = $color;
+        $array_vars['alumnos'] = $alumnos_a_mostrar;
 
         return [
             '#theme' => 'theme_test1',
