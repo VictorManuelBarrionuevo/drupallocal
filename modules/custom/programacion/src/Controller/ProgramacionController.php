@@ -30,11 +30,15 @@ class ProgramacionController
 
         $query_grados = "SELECT distinct(grado) FROM alumno order by grado ASC;";
         $grados = $database->query($query_grados)->fetchAll();
+        
+        // BUSCAR LISTADO DE MATERIAS
+        $query_materias = "SELECT nombre, id FROM materias;";
+        $materias = $database->query($query_materias)->fetchAll();
 
-
+ 
 
         /*print_r('<PRE>');
-        print_r($alumnos);
+        print_r($materias);
         print_r('</PRE>');
         die();*/
 
@@ -49,7 +53,11 @@ class ProgramacionController
         } else {
             $maestro_id = 1;
         }
-        
+        if(isset($_GET['materias_id'])){
+            $materia_id = $_GET['materias_id'];
+        } else {
+            $materia_id = 1;
+        }
         $query = "select a.nombre, a.apellido from alumno a
                 inner join maestro m on a.maestro_id = m.id
                 where grado = $grado
@@ -68,8 +76,12 @@ class ProgramacionController
         $array_vars['alumnos'] = $alumnos_a_mostrar;
         $array_vars['maestros'] = $maestros;
         $array_vars['grados'] = $grados;
+        $array_vars['materias'] = $materias;
         $array_vars['grado_selected'] = $grado;
         $array_vars['maestro_selected'] = $maestro_id;
+        $array_vars['materia_selected'] = $materia_id;
+        
+
         return [
             '#theme' => 'theme_test1',
             '#array_vars' => $array_vars
