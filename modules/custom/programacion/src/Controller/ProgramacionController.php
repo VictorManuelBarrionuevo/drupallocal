@@ -53,8 +53,8 @@ class ProgramacionController
         } else {
             $maestro_id = 1;
         }
-        if(isset($_GET['materias_id'])){
-            $materia_id = $_GET['materias_id'];
+        if(isset($_GET['materia_id'])){
+            $materia_id = $_GET['materia_id'];
         } else {
             $materia_id = 1;
         }
