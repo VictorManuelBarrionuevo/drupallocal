@@ -1,19 +1,47 @@
-<p>Result:
-	{% for alumno in array_vars.alumnos %}
-		<li>{{ alumno }}</li>
-	{% endfor %}
-</p>
+<div class="div1">
+	<form action="/programacion/test1" method="get">
+		<div class="menu_filter">
+			<label for="grado">Grado:</label>
+			<select id="grado" name="grado">
+				{% for grado in array_vars.grados %}
+					{% if array_vars.grado_selected == grado.grado %}
+						<option value="{{ grado.grado }}" selected>{{ grado.grado }}</option>
+					{% else %}
+						<option value="{{ grado.grado }}">{{ grado.grado }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		<div class="menu_filter">
+			<label for="maestro_id">Maestro:</label>
+			<select id="maestro_id" name="maestro_id">
+				{% for maestro in array_vars.maestros %}
+					{% if array_vars.maestro_selected == maestro.id %}
+						<option value="{{ maestro.id }}" selected>{{ maestro.nombre }}
+							{{ maestro.apellido }}</option>
+					{% else %}
+						<option value="{{ maestro.id }}">{{ maestro.nombre }}
+							{{ maestro.apellido }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		<div class="menu_filter">
+			<input type="submit" value="Buscar"/>
+		</div>
+	</form>
+</div>
 
-
-<form action="/programacion/test1" method="get">
-	<label for="grado">Grado:</label>
-	<input type="text" id="grado" class="clear" name="grado"/>
-	<label for="maestro_id">Maestro id:</label>
-	<input type="text" id="maestro_id" class="clear" name="maestro_id"/>
-	<input type="submit" value="Buscar"/>
-</form>
-
-
+<div class="div2">
+	Alumnos:
+		{% if array_vars.alumnos|length > 0 %}
+			{% for alumno in array_vars.alumnos %}
+				<li>{{ alumno }}</li>
+			{% endfor %}
+		{% else %}
+			<li>No hay resultado</li>
+		{% endif %}
+</div>
 <!--p>Numero random:
 	{#{array_vars.num_random}#}
 </p-->

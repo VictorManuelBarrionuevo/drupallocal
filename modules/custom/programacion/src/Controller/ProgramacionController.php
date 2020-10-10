@@ -22,14 +22,29 @@ class ProgramacionController
      */
     public function test1()
     {
-        
         $database = \Drupal::database();
+
+        // BUSCAR LISTADO DE MAESTROS
+        $query_maestros = "SELECT nombre, apellido, id FROM maestro;";
+        $maestros = $database->query($query_maestros)->fetchAll();
+
+        $query_grados = "SELECT distinct(grado) FROM alumno order by grado ASC;";
+        $grados = $database->query($query_grados)->fetchAll();
+
+
+
+        /*print_r('<PRE>');
+        print_r($alumnos);
+        print_r('</PRE>');
+        die();*/
+
+        
         if(isset($_GET['grado'])){
             $grado = $_GET['grado'];
         } else {
             $grado = 1;
         }
-        if(isset($_GET['grado'])){
+        if(isset($_GET['maestro_id'])){
             $maestro_id = $_GET['maestro_id'];
         } else {
             $maestro_id = 1;
@@ -47,17 +62,14 @@ class ProgramacionController
         foreach ($alumnos as $alumno) {
              $alumnos_a_mostrar[] = $alumno->nombre . ' ' . $alumno->apellido;
         }
-        /*print_r('<PRE>');
-        print_r($alumnos_a_mostrar);
-        print_r('<PRE>');
-        die();*/
-        
         $num_random = rand(5, 15);
-
         $array_vars = [];
         $array_vars['num_random'] = $num_random;
         $array_vars['alumnos'] = $alumnos_a_mostrar;
-
+        $array_vars['maestros'] = $maestros;
+        $array_vars['grados'] = $grados;
+        $array_vars['grado_selected'] = $grado;
+        $array_vars['maestro_selected'] = $maestro_id;
         return [
             '#theme' => 'theme_test1',
             '#array_vars' => $array_vars
