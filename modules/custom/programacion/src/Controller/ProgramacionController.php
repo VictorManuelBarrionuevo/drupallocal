@@ -41,6 +41,9 @@ class ProgramacionController
         print_r($materias);
         print_r('</PRE>');
         die();*/
+        /*en el isset, vamos a comprobar que la variable que traiga get sea grado, en caso de ser asi, 
+        lr vamos a igualar la variable grado a ;get(grado), seria definir como una variable existente o null
+        en caso de no existir esa igualacion de variable en el get, se le asigna el uno(else) para que la variable exista;*/
 
         
         if(isset($_GET['grado'])){
