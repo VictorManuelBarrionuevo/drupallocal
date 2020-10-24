@@ -3,6 +3,7 @@
 		<div class="menu_filter">
 			<label for="grado">Grado:</label>
 			<select id="grado" name="grado">
+				<option disabled selected value> -- select an option -- </option>
 				{% for grado in array_vars.grados %}
 					{% if array_vars.grado_selected == grado.grado %}
 						<option value="{{ grado.grado }}" selected>{{ grado.grado }}</option>
@@ -15,6 +16,7 @@
 		<div class="menu_filter">
 			<label for="maestro_id">Maestro:</label>
 			<select id="maestro_id" name="maestro_id">
+			<option disabled selected value> -- select an option -- </option>
 				{% for maestro in array_vars.maestros %}
 					{% if array_vars.maestro_selected == maestro.id %}
 						<option value="{{ maestro.id }}" selected>{{ maestro.nombre }}
@@ -51,75 +53,29 @@
 <div class="div2">
 	Alumnos:
 		{% if array_vars.alumnos|length > 0 %}
+			<table style="width:100%">
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Materias</th>
+					<th>Grado</th>
+					<th>Maestro</th>
+				</tr>
 			{% for alumno in array_vars.alumnos %}
-				<li>{{ alumno }}</li>
+				<tr>
+					<td>{{ alumno.nombre }}</td>
+					<td>{{ alumno.apellido }}</td>
+					<td>
+					{% for materias in alumno.materias %}
+						<li>{{ materias }}</li>
+					{% endfor %}
+					</td>
+					<td>{{ alumno.grado }}</td>
+					<td>{{ alumno.maestro_id }}</td>
+				</tr>
 			{% endfor %}
+			</table>
 		{% else %}
 			<li>No hay resultado</li>
 		{% endif %}
 </div>
-<!--p>Numero random:
-	{#{array_vars.num_random}#}
-</p-->
-<!--input type="text" id="input1" class="clear" name="input1" onkeyup="str_validate(event.keyCode)">
-<button onclick="calculate()">=</button>
-<button onclick="clearNumbers()">C</button>
-
-<div>
-	<button onclick="writeNumber(1)">1</button>
-	<button onclick="writeNumber(2)">2</button>
-	<button onclick="writeNumber(3)">3</button>
-	<button onclick="writeNumber('+')">+</button>
-</div>
-<div>
-	<button onclick="writeNumber(4)">4</button>
-	<button onclick="writeNumber(5)">5</button>
-	<button onclick="writeNumber(6)">6</button>
-	<button onclick="writeNumber('-')">-</button>
-</div>
-<div>
-	<button onclick="writeNumber(7)">7</button>
-	<button onclick="writeNumber(8)">8</button>
-	<button onclick="writeNumber(9)">9</button>
-</div>
-
-<div>
-
-	<div class="inputs-container">
-		<div>
-			<input type="text" id="1" class="posicion1 pos" name="1">
-			<input type="text" id="2" class="posicion2 pos" name="2">
-			<input type="text" id="3" class="posicion3 pos float-right" name="3">
-		</div>
-		<div>
-			<input type="text" id="4" class="posicion4 pos" name="4">
-			<input type="text" id="5" class="posicion5 pos float-right" name="5">
-		</div>
-		<div>
-			<input type="text" id="6" class="posicion6 pos" name="6">
-			<input type="text" id="7" class="posicion7 pos float-right" name="7">
-		</div>
-		<div>
-			<input type="text" id="8" class="posicion8 pos" name="8">
-			<input type="text" id="9" class="posicion9 pos" name="9">
-			<input type="text" id="10" class="posicion8 pos float-right" name="10">
-		</div>
-	</div>
-	<button id="alternar">ALTERNAR</button>
-</div>
-
-
-<button onclick="test_for()">test for</button>
-<button onclick="cambiar_tamanio()" id="boton_id" class="boton_class">CAMBIAR TAMANIO</button>
-<div id="cuadrado1" class="cuadrado color_rojo">Cuadrado 1</div>
-<div id="cuadrado2" onmouseover="move_this(this)" class="cuadrado color_verde">Cuadrado 2</div>
-<div id="cuadrado3" onmouseover="move_this(this)" class="cuadrado color_amarillo">Cuadrado 3</div>
-<div id="cuadrado4" class="cuadrado color_negro">Cuadrado 4</div>
-<div id="cuadrado5" class="cuadrado caja">caja</div>
-<div id="cuadrado6" class="cuadrado box">caja</div>
-<button id="boton">boton prueba</button-->
-
-
-{# [module]/templates/my-template.html.twig #}
-{#{ dump(_context|keys) }#}
-{#{ dump(array_vars) }#}

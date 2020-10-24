@@ -35,45 +35,53 @@ class ProgramacionController
         $query_materias = "SELECT nombre, id FROM materias;";
         $materias = $database->query($query_materias)->fetchAll();
 
- 
+        if(isset($_GET['materia_id'])){
+            $materia_id = $_GET['materia_id'];
+        } else {
+            $materia_id = 1;
+        }
 
         /*print_r('<PRE>');
         print_r($materias);
         print_r('</PRE>');
         die();*/
 
-        
+        $query = "select a.nombre, 
+                a.apellido, 
+                a.materias as materias_ids, 
+                a.maestro_id,
+                a.grado
+                from alumno a
+                inner join maestro m on a.maestro_id = m.id ";
+
         if(isset($_GET['grado'])){
             $grado = $_GET['grado'];
-        } else {
-            $grado = 1;
+            $query .= " and grado = $grado";
         }
+
         if(isset($_GET['maestro_id'])){
             $maestro_id = $_GET['maestro_id'];
-        } else {
-            $maestro_id = 1;
+            $query .= " and maestro_id = $maestro_id";
         }
-        if(isset($_GET['materia_id'])){
-            $materia_id = $_GET['materia_id'];
-        } else {
-            $materia_id = 1;
-        }
-        $query = "select a.nombre, a.apellido from alumno a
-                inner join maestro m on a.maestro_id = m.id
-                where grado = $grado
-                and maestro_id = $maestro_id;";
 
         $alumnos = $database->query($query)->fetchAll();
 
         
 
         foreach ($alumnos as $alumno) {
-             $alumnos_a_mostrar[] = $alumno->nombre . ' ' . $alumno->apellido;
+            $materias_ids = $alumno->materias_ids;
+            $idsEx = explode(',', $materias_ids);
+            foreach ($idsEx as $idEx) {
+                $matQuery = "SELECT nombre FROM materias where id = $idEx;";
+                $nombre_materia = $database->query($matQuery)->fetchAll();
+                $alumno->materias[] = $nombre_materia[0]->nombre;
+            }
         }
+
         $num_random = rand(5, 15);
         $array_vars = [];
         $array_vars['num_random'] = $num_random;
-        $array_vars['alumnos'] = $alumnos_a_mostrar;
+        $array_vars['alumnos'] = $alumnos;
         $array_vars['maestros'] = $maestros;
         $array_vars['grados'] = $grados;
         $array_vars['materias'] = $materias;
@@ -81,7 +89,6 @@ class ProgramacionController
         $array_vars['maestro_selected'] = $maestro_id;
         $array_vars['materia_selected'] = $materia_id;
         
-
         return [
             '#theme' => 'theme_test1',
             '#array_vars' => $array_vars
@@ -92,27 +99,8 @@ class ProgramacionController
     {
         $db = \Drupal::database();
         $text = $_POST['inputtexto'];
-
-        /*$db->update('programacion')->condition('id' , '4')
-        ->updateFields([
-            'programacion_value' => $text
-        ])
-        ->execute();*/
-
-
-
-
-
-
         print_r('nuevo valor: ');
         print_r($text);
-        //die();
-
-
-
-
         $db->query("UPDATE `drupaldb`.`programacion` SET `programacion_value` = '$text' WHERE (`id` = '4');")->execute();
     }
-
-
 }
