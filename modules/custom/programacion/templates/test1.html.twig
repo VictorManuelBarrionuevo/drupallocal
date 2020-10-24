@@ -29,20 +29,6 @@
 			</select>
 		</div>
 		<div class="menu_filter">
-			<label for="materias">Materia:</label> 
-			<select id="materias" name="materia_id">
-			   {% for materia in array_vars.materias %}
-					{% if array_vars.materia_selected == materia.id %}
-						<option value="{{ materia.id }}" selected>{{ materia.nombre }}</option>
-					{% else %}
-						<option value="{{ materia.id }}" >{{ materia.nombre }}</option>
-					{% endif %}
-				{% endfor %}
-			 
-			 
-		</div>
-	
-		<div class="menu_filter">
 			<input type="submit" value="Buscar"/>
 		</div>
 	</form>
