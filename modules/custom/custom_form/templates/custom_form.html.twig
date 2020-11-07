@@ -1,1 +1,64 @@
-<h1>Hola</h1>
+<form action="/afip_form/add" type="POST">
+	<fieldset>
+		<legend>Informacion Personal:</legend>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" value="">
+		<label for="apellido">Apellido:</label>
+		<input type="text" id="apellido" name="apellido" value="">
+
+		<fieldset>
+			<legend>Genero:</legend>
+			<label for="male"><input class="radio_gender" type="radio" id="male" name="gender" value="male"> Masculino</label>
+            <label for="female"><input type="radio" id="female" name="gender" value="female"> Femenino</label>
+			<label for="other"><input type="radio" id="other" name="gender" value="other"> Otro</label>
+
+			<label for="otro_genero">Especifique cual:</label>
+			<input type="text" id="otro_genero" name="otro_genero" value="">
+		</fieldset>
+	</fieldset>
+	<fieldset>
+		<legend>Direccion:</legend>
+		<label for="pais">Pais:</label>
+		<select id="pais" name="pais">
+			<option value="ar">Argentina</option>
+			<option value="br">Brazil</option>
+			<option value="ch">Chile</option>
+			<option value="ur">Uruguay</option>
+		</select>
+		<label for="provincia">Provincia:</label>
+		<select id="provincia" name="provincia">
+			<option value="ar">Buens Aires</option>
+			<option value="br">Santa fe</option>
+			<option value="ch">Cordoba</option>
+			<option value="ur">San Luis</option>
+		</select>
+	</fieldset>
+	<input type="submit" value="Submit">
+</form>
+
+<!--
+nombre       texto
+apellido     texto
+genero       radio
+email        email
+fecha de nacimiento    date
+dni           number
+cuit          number
+
+pais          select
+provincia     select
+localidad     texto
+calle         texto
+numero        number
+piso          number
+codigo postal number 
+
+telefono fijo  number
+telefono movil number
+
+hijos          number
+estado civil   radio
+
+usuario        texto
+contraseña     password
+-->
