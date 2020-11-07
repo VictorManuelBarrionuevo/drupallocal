@@ -68,8 +68,25 @@ class ProgramacionController
         }
 
         $alumnos = $database->query($query)->fetchAll();
+      
+            /*print_r('<PRE>');
+            print_r($alumno->maestro_id);
+            print_r('</PRE>');
+            die();*/
+       
+       
+        foreach ($alumnos as $alumno) {
+            $maestro_id = $alumno->maestro_id;
+            $maesQuery = "SELECT nombre, apellido FROM maestro where id= $maestro_id;";
+            $nombre_maestro = $database->query($maesQuery)->fetchAll();
+            $alumno->maestro = $nombre_maestro[0]->apellido . ' ' .$nombre_maestro[0]->nombre ;
+            /*print_r('<PRE>');
+            print_r($nombre_maestro[0]->apellido . ' ' .$nombre_maestro[0]->nombre);
+            print_r('</PRE>');
+            die();*/
+        }
 
-        
+
 
         foreach ($alumnos as $alumno) {
             $materias_ids = $alumno->materias_ids;
