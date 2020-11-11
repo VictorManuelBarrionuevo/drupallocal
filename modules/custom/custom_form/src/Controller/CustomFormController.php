@@ -17,9 +17,36 @@ class CustomFormController{
      * @return array
      *   A simple renderable array.
      */
-    public function add_new(){
+   public function add_new(){
+      
+
+         print_r( $_POST); 
+         die();
+        
+
+
         return [
             '#theme' => 'custom_form'
+        
         ];
+
     }
+      
+   /* public function add_new2(){
+      
+        print_r( $_POST); 
+
+
+
+        $afip=$_POST['nombre'];
+        print_r($afip);
+   
+    }*/
+   
+
+
+
+
+
+
 }
