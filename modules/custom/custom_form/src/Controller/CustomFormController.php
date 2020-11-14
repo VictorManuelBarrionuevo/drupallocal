@@ -9,51 +9,26 @@
 
 namespace Drupal\custom_form\Controller;
 
-class CustomFormController{
-    
+class CustomFormController
+{
+
     /**
      * Returns a simple page.
      *
      * @return array
      *   A simple renderable array.
      */
-   public function add_new(){
-      
-    
-    foreach ($_POST as $key => $value)
-      {
-            echo '<p>'.$key.'</p>';
-            echo '<p>'.$value.'</p>';
-            echo '<hr />';
-       
-       }
-        // print_r( $_POST); 
-        // die();
-        
-
-
+    public function add_new()
+    {
         return [
             '#theme' => 'custom_form'
-        
+
         ];
-
     }
-      
-   /* public function add_new2(){
-      
-        print_r( $_POST); 
-
-
-
-        $afip=$_POST['nombre'];
-        print_r($afip);
-   
-    }*/
-   
-
-
-
-
-
-
+    public function save_new()
+    {
+        print_r("<pre>");
+        print_r($_POST['apellido']);
+        print_r("</pre>");
+    }
 }

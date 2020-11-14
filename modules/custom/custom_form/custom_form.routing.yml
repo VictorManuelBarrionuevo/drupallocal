@@ -5,3 +5,10 @@ custom_form.add_new:
     _title: 'Add New User'
   requirements:
     _permission: 'access content'
+custom_form.save_new:
+  path: '/afip_form/save'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::save_new'
+    _title: 'User'
+  requirements:
+    _permission: 'access content'
