@@ -19,9 +19,16 @@ class CustomFormController{
      */
    public function add_new(){
       
-
-         print_r( $_POST); 
-         die();
+    
+    foreach ($_POST as $key => $value)
+      {
+            echo '<p>'.$key.'</p>';
+            echo '<p>'.$value.'</p>';
+            echo '<hr />';
+       
+       }
+        // print_r( $_POST); 
+        // die();
         
 
 

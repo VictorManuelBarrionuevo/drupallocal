@@ -1,4 +1,5 @@
 <form action="/afip_form/add" method="POST">
+    <fieldset>
 		<legend>Informacion Personal:</legend>
 		<label for="nombre">Nombre:</label>
 		<input type="text" id="nombre" name="nombre" value="">
@@ -16,15 +17,16 @@
         <label for="casado">Casado</label><br>
 		<label for="hijos">Hijos:</label>
 		<input type="number" id="hijos" name="hijos" value="">
+	</fieldset>
 
-		<fieldset>
+	<fieldset>
 			<legend>Genero:</legend>
 			<label for="male"><input class="radio_gender" type="radio" id="male" name="gender" value="male"> Masculino</label>
             <label for="female"><input type="radio" id="female" name="gender" value="female"> Femenino</label>
 			<label for="other"><input type="radio" id="other" name="gender" value="other"> Otro</label>
 			<label for="otro_genero">Especifique cual:</label>
 			<input type="text" id="otro_genero" name="otro_genero" value="">
-		</fieldset>
+	</fieldset>
 	</fieldset>
 	<fieldset>
 		<legend>Direccion:</legend>
@@ -71,10 +73,14 @@
 	</fieldset>
 	<fieldset>
 	      <input type="checkbox" id="checkbox1" name="checkbox1" value="notificaciones">
-          <label for="vehicle1">¿Desea recibir notificaciones?:</label><br>
+          <label for="not1">¿Desea recibir notificaciones?:</label><br>
           <input type="checkbox" id="checkbox2" name="checkbox2" value="terminos">
-          <label for="vehicle2">¿Acepta los ternimos y condiciones?:</label><br>
+          <label for="not2">¿Acepta los ternimos y condiciones?:</label><br>
 
+	</fieldset>
+	<fieldset>
+	 <label for="comentarios">Desea realizar algun comentario?:</label>
+	 <textarea name="comentarios" rows="5" cols="40"></textarea>
 	</fieldset>
 	<input type="submit" value="Submit">-->
 </form>
