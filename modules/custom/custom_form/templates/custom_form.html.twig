@@ -1,3 +1,5 @@
+{#{ dump(_context|keys) }#}
+{#{ dump(variables.pais_prov) }#}
 <form action="/afip_form/save" method="POST">
 	<fieldset>
 		<legend>Informacion Personal:</legend>
@@ -40,17 +42,11 @@
 	<legend>Direccion:</legend>
 	<label for="pais">Pais:</label>
 	<select id="pais" name="pais">
-		<option value="ar">Argentina</option>
-		<option value="br">Brazil</option>
-		<option value="ch">Chile</option>
-		<option value="ur">Uruguay</option>
+		
 	</select>
 	<label for="provincia">Provincia:</label>
 	<select id="provincia" name="provincia">
-		<option value="ar">Buens Aires</option>
-		<option value="br">Santa fe</option>
-		<option value="ch">Cordoba</option>
-		<option value="ur">San Luis</option>
+	
 	</select>
 	<label for="localidad">Localidad:</label>
 	<input type="text" id="localidad" name="localidad" value="">
@@ -91,3 +87,8 @@
 	</fieldset>
 	<input type="submit" value="Submit">
 </form>
+<div style="display:none" id="pais_prov">
+	{% for pais_prov in variables.pais_prov %}
+		<li pais-id="{{pais_prov.pais_id}}" pais-name="{{pais_prov.pais_name}}" provincia-id="{{pais_prov.provincia_id}}" provincia-name="{{pais_prov.provincia_name}}">
+	{% endfor %}
+</div>

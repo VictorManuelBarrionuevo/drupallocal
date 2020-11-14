@@ -12,7 +12,7 @@ function custom_form_theme($existing, $type, $theme, $path)
 {
     $themes['custom_form'] = [
         'template' => 'custom_form',
-        'variables' => array('array_vars' => NULL),
+        'variables' => array('variables' => NULL),
     ];
     return $themes;
 }
