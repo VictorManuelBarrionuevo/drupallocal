@@ -40,7 +40,7 @@ class CustomFormController
     public function save_new()
     {
         print_r("<pre>");
-        print_r($_POST['apellido']);
+        print_r($_POST['pais']);
         print_r("</pre>");
     }
 }
