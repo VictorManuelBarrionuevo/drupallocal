@@ -35,12 +35,44 @@ class CustomFormController
             '#theme' => 'custom_form',
             '#variables' => $variables
         ];
-        
     }
     public function save_new()
     {
-        print_r("<pre>");
-        print_r($_POST['pais']);
-        print_r("</pre>");
+        $database = \Drupal::database();
+
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $nacimiento = $_POST['nacimiento'];
+        $dni = $_POST['dni'];
+        $cuit = $_POST['cuit'];
+        $estado_civil = $_POST['estado_civil'];
+        if ($estado_civil == 'casado') {
+            $est_civil = 1;
+        } else {
+            $est_civil = 0;
+        }
+        $hijos = $_POST['hijos'];
+
+        $pais = $_POST['pais'];
+
+        $query_to_insert = "INSERT INTO `forms` (`nombre`, `apellido`, `nacimiento`, `dni`, `cuit`, `estado_civil`, `hijos`, `id_pais`) 
+            VALUES ('$nombre', '$apellido', '$nacimiento', '$dni', '$cuit', '$est_civil', '$hijos', '$pais');";
+        $database->query($query_to_insert);
+
+        $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit, f. estado_civil, f.hijos, p.name as pais
+                            FROM forms f
+                            inner join paises p on f.id_pais = p.id;";
+
+        $form_list = $database->query($query_get_list)->fetchAll();
+
+        /*print_r('<PRE>');
+        print_r($form_list);
+        print_r('</PRE>');
+        die();*/
+
+        return [
+            '#theme' => 'custom_form_list',
+            '#variables' => $form_list
+        ];
     }
 }

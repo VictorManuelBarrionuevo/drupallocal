@@ -1,6 +1,6 @@
 (function ($) {
     $(document).ready(function () {
-        $("input").prop('required',true);
+        //$("input").prop('required',true);
         $(".ocultar").hide();
         window.array_paises = [];
         $("#pais_prov li").each(function () {
