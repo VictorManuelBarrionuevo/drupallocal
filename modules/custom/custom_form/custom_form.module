@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function custom_form_page_attachments(array &$attachments)
+{
+    $attachments['#attached']['library'][] = 'custom_form/custom-form-library';
+}
+
+function custom_form_theme($existing, $type, $theme, $path)
+{
+    $themes['custom_form'] = [
+        'template' => 'custom_form',
+        'variables' => array('variables' => NULL),
+    ];
+    $themes['custom_form_list'] = [
+        'template' => 'custom_form_list',
+        'variables' => array('variables' => NULL),
+    ];
+    return $themes;
+}

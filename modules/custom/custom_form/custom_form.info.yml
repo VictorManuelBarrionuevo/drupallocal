@@ -1,0 +1,6 @@
+name: Formulario de AFIP
+description: Formulario de alta de usuario para AFIP
+package: Custom
+type: module
+version: 1.0
+core: 8.x
