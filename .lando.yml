@@ -1,0 +1,4 @@
+name: drupallocal
+recipe: drupal8
+config:
+  webroot: .
