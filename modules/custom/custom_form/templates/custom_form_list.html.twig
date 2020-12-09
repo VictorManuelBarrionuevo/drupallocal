@@ -1,2 +1,40 @@
 {{ dump(_context|keys) }}
 {{ dump(variables.0.pais) }}
+
+
+hola 2
+
+{{ dump(array_vars) }}
+
+{% for array in array_vars  %}
+	{# the contents of this variable are displayed on the web page #}
+	{{ dump(array) }}
+
+
+{% endfor %}
+
+
+{#<div class="div1">
+	{% for nombres in array_vars.nombre %}
+		{{ dump(nombres) }}
+	{% endfor %}
+</div>
+
+<div class="div2">
+	{% for nombres in array_vars.nombre %}
+		<p>{{ nombres.nombre }}</p>
+	{% endfor %}
+</div>
+
+<div class="div3">
+	{% for curso in cursos %}
+   
+    {% if curso.keywords|length > 0 %}
+        <ul>
+            {% for keyword in curso.keywords %}
+               <li>{{ keyword }}</li>
+            {% endfor %}
+        </ul>
+       {% endif %}
+{% endfor %}
+</div>#}
