@@ -1,16 +1,6 @@
-{{ dump(_context|keys) }}
-{{ dump(variables.0.pais) }}
+{#{ dump(_context|keys) }#}
 
-
-
-hola 2
-
-
-{#% for array in variables  %}
-	{{ dump(array) }} no funciono se rompe
-{% endfor %#}
-
-{% for array in form_list %}
-	<li>{{ array }}</li>
+{% for array in variables %}
+	<li>{{ array.nombre }}</li>
 {% endfor %}
 
