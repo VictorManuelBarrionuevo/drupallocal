@@ -1,4 +1,5 @@
 name: drupallocal
 recipe: drupal8
 config:
+  drush: "*"
   webroot: .

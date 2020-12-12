@@ -1,2 +1,16 @@
 {{ dump(_context|keys) }}
 {{ dump(variables.0.pais) }}
+
+
+
+hola 2
+
+
+{#% for array in variables  %}
+	{{ dump(array) }} no funciono se rompe
+{% endfor %#}
+
+{% for array in form_list %}
+	<li>{{ array }}</li>
+{% endfor %}
+
