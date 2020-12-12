@@ -1,4 +1,4 @@
-basic-page-library:
+basic-test-library:
   version: 1.x
   css:
     theme:
