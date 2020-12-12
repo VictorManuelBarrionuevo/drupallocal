@@ -1,0 +1,6 @@
+name: Basic Module for dev
+description: Modulo para desarrollar tests basicos de desarrollo de software
+package: Custom
+type: module
+version: 1.0
+core: 8.x
