@@ -8,7 +8,7 @@
 
 function basic_test_page_attachments(array &$attachments)
 {
-    $attachments['#attached']['library'][] = 'basic_test/basic_test-library';
+    $attachments['#attached']['library'][] = 'basic_test/basic-test-library';
 }
 
 /**
