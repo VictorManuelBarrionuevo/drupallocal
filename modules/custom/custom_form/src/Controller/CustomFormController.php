@@ -65,7 +65,7 @@ class CustomFormController
 
         $form_list = $database->query($query_get_list)->fetchAll();
 
-        $array_vars  = [];
+        /*$array_vars  = [];
         $array_vars['nombre'] = $nombre;
         $array_vars['apellido'] = $apellido;
         $array_vars['nacimiento'] = $nacimiento;
@@ -73,7 +73,7 @@ class CustomFormController
         $array_vars['cuit'] = $cuit;
         $array_vars['estado_civil'] = $estado_civil;
         $array_vars['hijos'] = $hijos;
-        $array_vars['pais'] = $pais;
+        $array_vars['pais'] = $pais;*/
 
         /*print_r('<PRE>');
         print_r($array_vars['nombre']);
@@ -84,7 +84,7 @@ class CustomFormController
         return [
             '#theme' => 'custom_form_list',
             '#variables' => $form_list,
-            '#variables' => $array_vars,
+            
 
 
 
