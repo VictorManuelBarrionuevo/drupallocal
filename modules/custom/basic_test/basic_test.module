@@ -2,22 +2,22 @@
 
 /**
  * @file
- * Contains programacion.module.
+ * Contains basic_test.module.
  */
 
 
-function programacion_page_attachments(array &$attachments)
+function basic_test_page_attachments(array &$attachments)
 {
-    //$attachments['#attached']['library'][] = 'programacion/programacion-testjs-library';
+    $attachments['#attached']['library'][] = 'basic_test/basic_test-library';
 }
 
 /**
  * Implements hook_theme().
  */
-function programacion_theme($existing, $type, $theme, $path)
+function basic_test_theme($existing, $type, $theme, $path)
 {
-    $themes['theme_test1'] = [
-        'template' => 'test1',
+    $themes['basic_test_theme_test'] = [
+        'template' => 'basic-test',
         'variables' => array('array_vars' => NULL),
     ];
     return $themes;

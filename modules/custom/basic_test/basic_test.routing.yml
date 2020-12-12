@@ -1,0 +1,7 @@
+basic_test.home:
+  path: '/basic_test_page'
+  defaults:
+    _controller: '\Drupal\basic_test\Controller\BasicTestController::hola_mundo'
+    _title: 'Primer Pagina'
+  requirements:
+    _permission: 'access content'
