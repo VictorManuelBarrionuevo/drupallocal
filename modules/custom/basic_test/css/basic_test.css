@@ -15,12 +15,12 @@ table {
   }
   
   td, th {
-    border: 3px solid #c00606;
+    border: 3px solid #ffb7b7;
     text-align: left;
     padding: 0px;
   }
   
   tr:nth-child(even) {
-    background-color: #bd0606;
+    background-color: #ffc3c3;
     opacity: 0.3;
   }
