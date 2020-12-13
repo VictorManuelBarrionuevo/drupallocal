@@ -8,3 +8,18 @@
     height: 300px;
     background-color: green;
 }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  td, th {
+    border: 3px solid #c00606;
+    text-align: left;
+    padding: 5px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #bd0606;
+  }
