@@ -1,6 +1,44 @@
 {#{ dump(_context|keys) }#}
 
 {% for array in variables %}
-	<li>{{ array.nombre }}</li>
+	<table style="width:100%">
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Nacimiento</th>
+			<th>Dni</th>
+			<th>Cuit</th>
+			<th>Estado Civil</th>
+			<th>Hijos</th>
+			<th>Pais</th>
+			<th>Provincia</th>
+			<th>Localidad</th>
+			<th>Calle</th>
+			<th>Numero</th>
+			<th>Piso</th>
+			<th>Codigo Postal</th>
+			<th>Email</th>
+			<th>Telefono Celular</th>
+			<th>Telefono Fijo</th>
+		</tr>
+		<tr>
+			<td>{{ array.nombre }}</td>
+			<td>{{ array.apellido }}</td>
+			<td>{{ array.nacimiento }}</td>
+			<td>{{ array.dni}}</td>
+			<td>{{ array.cuit }}</td>
+			<td>{{ array.estado_civil }}</td>
+			<td>{{ array.hijos}}</td>
+			<td>{{ array.pais}}</td>
+			<td>{{ array.provincia}}</td>
+			<td>{{ array.localidad}}</td>
+			<td>{{ array.calle}}</td>
+			<td>{{ array.numero}}</td>
+			<td>{{ array.piso}}</td>
+			<td>{{ array.codigo_postal}}</td>
+			<td>{{ array.email}}</td>
+			<td>{{ array.telefono_celular}}</td>
+			<td>{{ array.telefono_fijo}}</td>
+		</tr>
+	</table>
 {% endfor %}
-
