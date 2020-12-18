@@ -91,4 +91,29 @@ class CustomFormController
             '#variables' => $form_list,
         ];
     }
+
+    public function view_info()
+    {
+        $database = \Drupal::database();
+
+        $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
+        f. estado_civil, f.hijos, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
+        f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo
+                           FROM forms f
+                           inner join paises p on f.id_pais = p.id
+                           inner join provincias pr on f.id_provincia = pr.id;";
+
+        $form_view = $database->query($query_get_list)->fetchAll();
+
+        print ( '<pre>' )  ;
+        print_r ( $form_view ) ;
+        print ( '</pre>' ) ;
+        die;
+
+        
+        return [
+            '#theme' => 'custom_form_view_list',
+            '#variables' => $form_view
+        ];
+    }
 }
