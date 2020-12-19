@@ -50,7 +50,7 @@
 			<td>{{ array.email}}</td>
 			<td>{{ array.telefono_celular}}</td>
 			<td>{{ array.telefono_fijo}}</td>
-			<td><input type="button" value="Botón" name="B4" OnClick="location.href='/afip_form/view'"></td>
+			<td><a href="/afip_form/view?id={{ array.id }}" type="button" value="Botón" name="B4">View More</a></td>
 		</tr>
 		
 	{% endfor %}

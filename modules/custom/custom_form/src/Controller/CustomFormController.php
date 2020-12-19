@@ -9,6 +9,8 @@
 
 namespace Drupal\custom_form\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class CustomFormController
 {
 
@@ -99,13 +101,11 @@ class CustomFormController
         ];
     }
 
-    public function view_info()
+    public function view_info(Request $request)
     {
+        $form_id = $request->query->get('id');
         $database = \Drupal::database();
-
-        
-
-        $query_get_list = " SELECT * FROM drupal8.forms where id=1;";
+        $query_get_list = " SELECT * FROM forms where id = $form_id ;";
 
          /*$query_get_list = " SELECT f.id=1, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
         f. estado_civil, f.hijos, f.genero, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
