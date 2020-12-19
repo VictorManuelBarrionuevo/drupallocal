@@ -1,7 +1,5 @@
-#t01 {
-  width: 50%;
-  background-color: rgb(193, 193, 207);
-  padding: 2px 2px
+#ocultando{
+  display: none;
 }
 
 #ex2 {

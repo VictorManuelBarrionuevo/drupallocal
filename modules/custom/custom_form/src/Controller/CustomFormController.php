@@ -8,7 +8,7 @@
  */
 
 namespace Drupal\custom_form\Controller;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class CustomFormController
@@ -81,6 +81,18 @@ class CustomFormController
              '$piso', '$codigo_postal', '$email', '$telefono_celular', '$telefono_fijo');";
         $database->query($query_to_insert);
 
+        return new RedirectResponse(\Drupal::url('custom_form.list'));
+              
+    }
+
+    
+    
+    
+    
+    public function list()
+
+    {
+        $database = \Drupal::database();
         $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
         f. estado_civil, f.hijos, f.genero, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
         f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo
@@ -99,20 +111,29 @@ class CustomFormController
             '#theme' => 'custom_form_list',
             '#variables' => $form_list,
         ];
+        
     }
+    
 
+    
+    
+        
+    
+    
     public function view_info(Request $request)
+
     {
         $form_id = $request->query->get('id');
         $database = \Drupal::database();
-        $query_get_list = " SELECT * FROM forms where id = $form_id ;";
-
-         /*$query_get_list = " SELECT f.id=1, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
+        $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
         f. estado_civil, f.hijos, f.genero, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
-        f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo 
+        f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo
                            FROM forms f
                            inner join paises p on f.id_pais = p.id
-                           inner join provincias pr on f.id_provincia = pr.id";*/
+                           inner join provincias pr on f.id_provincia = pr.id
+                           where f.id=$form_id;";
+
+
 
         $form_view = $database->query($query_get_list)->fetchAll();
 

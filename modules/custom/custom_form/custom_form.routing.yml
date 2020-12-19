@@ -12,6 +12,13 @@ custom_form.save_new:
     _title: 'User'
   requirements:
     _permission: 'access content'
+custom_form.list:
+  path: '/afip_form/list'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::list'
+    _title: 'Usuarios'
+  requirements:
+    _permission: 'access content'
 custom_form.view_info:
   path: '/afip_form/view'
   defaults:
