@@ -1,0 +1,35 @@
+<p class="noenvolver">
+	<div id="t01">
+		{% for array in variables %}
+			<li>Nombre:{{ array.nombre }}</li>
+			<li>Apellido:{{ array.apellido }}</li>
+			<li>Nacimiento:{{ array.nacimiento }}</li>
+			<li>Dni:{{ array.dni}}</li>
+			<li>Cuit:{{ array.cuit}}</li>
+			
+			{% if array.estado_civil == 0 %}
+				<li>Estado Civil:{{'soltero'}}</li>
+			{% else %}
+				<li>Estado Civil:{{'casado'}}</li>
+			{% endif %}
+
+			<li>Hijos:{{ array.hijos}}</li>
+			{% if array.genero == 0 %}
+				<li>Genero:{{'hombre'}}</li>
+			{% else %}
+				<li>Genero:{{'mujer'}}</li>
+			{% endif %}
+			<li>Pais:{{ array.pais}}</li>
+			<li>Provincia:{{ array.provincia}}</li>
+			<li>Localidad:{{ array.localidad}}</li>
+			<li>Calle:{{ array.calle}}</li>
+			<li>Numero:{{ array.numero}}</li>
+			<li>Piso:{{ array.piso}}</li>
+			<li>Codigo Postal:{{ array.codigo_postal}}</li>
+			<li>Email:{{ array.email}}</li>
+			<li>Telefono Celular:{{ array.telefono_celular}}</li>
+			<li>Telefono Fijo:{{ array.telefono_fijo}}</li>
+
+		{% endfor %}
+	</div>
+</p>

@@ -1,6 +1,60 @@
 {#{ dump(_context|keys) }#}
 
-{% for array in variables %}
-	<li>{{ array.nombre }}</li>
-{% endfor %}
+
+<table style="width:100%">
+	<tr style="background-color:#4CAF50">
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th>Nacimiento</th>
+		<th>Dni</th>
+		<th>Cuit</th>
+		<th>Estado Civil</th>
+		<th>Hijos</th>
+		<th>Genero</th>
+		<th>Pais</th>
+		<th>Provincia</th>
+		<th>Localidad</th>
+		<th>Calle</th>
+		<th>Numero</th>
+		<th>Piso</th>
+		<th>Codigo Postal</th>
+		<th>Email</th>
+		<th>Telefono Celular</th>
+		<th>Telefono Fijo</th>
+	</tr>
+	{% for array in variables %}
+		<tr>
+			<td>{{ array.nombre }}</td>
+			<td>{{ array.apellido }}</td>
+			<td>{{ array.nacimiento }}</td>
+			<td>{{ array.dni}}</td>
+			<td>{{ array.cuit}}</td>
+			{% if array.estado_civil == 0 %}
+				<td>{{'soltero'}}</td>
+			{% else %}
+				<td>{{'casado'}}</td>
+			{% endif %}
+			<td>{{ array.hijos}}</td>
+			{% if array.genero == 0 %}
+				<td>{{'hombre'}}</td>
+			{% else %}
+				<td>{{'mujer'}}</td>
+			{% endif %}
+			<td>{{ array.pais}}</td>
+			<td>{{ array.provincia}}</td>
+			<td>{{ array.localidad}}</td>
+			<td>{{ array.calle}}</td>
+			<td>{{ array.numero}}</td>
+			<td>{{ array.piso}}</td>
+			<td>{{ array.codigo_postal}}</td>
+			<td>{{ array.email}}</td>
+			<td>{{ array.telefono_celular}}</td>
+			<td>{{ array.telefono_fijo}}</td>
+			<td><a href="/afip_form/view?id={{ array.id }}" type="button" value="Botón" name="B4">View More</a></td>
+		</tr>
+		
+	{% endfor %}
+</table>
+
+
 

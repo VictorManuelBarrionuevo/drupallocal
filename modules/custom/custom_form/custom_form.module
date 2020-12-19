@@ -18,5 +18,9 @@ function custom_form_theme($existing, $type, $theme, $path)
         'template' => 'custom_form_list',
         'variables' => array('variables' => NULL),
     ];
+    $themes['custom_form_view_list'] = [
+        'template' => 'custom_form_view_list',
+        'variables' => array('variables' => NULL),
+    ];
     return $themes;
 }

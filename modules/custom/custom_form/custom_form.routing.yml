@@ -12,3 +12,10 @@ custom_form.save_new:
     _title: 'User'
   requirements:
     _permission: 'access content'
+custom_form.view_info:
+  path: '/afip_form/view'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::view_info'
+    _title: 'Informacion'
+  requirements:
+    _permission: 'access content'
