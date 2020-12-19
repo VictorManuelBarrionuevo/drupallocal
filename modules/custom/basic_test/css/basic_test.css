@@ -75,9 +75,19 @@ table {
   background-color: teal;
 }
 
+.cuadrado_test_tamano{
+  height: 100px;
+  width: 100px;
+  background-color: darkslategrey;
+}
 
-
-
+.cuadrado_test_hover{
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: yellow;
+  border-radius: 50px;
+}
 
 
 
