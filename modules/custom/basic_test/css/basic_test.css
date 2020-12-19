@@ -54,3 +54,37 @@ table {
 #C3{
   background-color: #730099;
 }
+
+.cuadrado3{
+  height: 50px;
+  width: 50px;
+  padding: 25px;
+  background-color: yellowgreen;
+}
+.cuadrado2{
+  height: 100px;
+  width: 100px;
+  padding: 50px;
+  background-color: tomato;
+}
+
+.cuadrado1{
+  height: 200px;
+  width: 200px;
+  padding: 50px;
+  background-color: teal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
