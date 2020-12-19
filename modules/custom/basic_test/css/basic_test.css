@@ -24,3 +24,33 @@ table {
     background-color: #ffc3c3;
     opacity: 0.3;
   }
+
+.contenedor .color_amarillo {
+  background-color: brown;
+}
+
+.color_amarillo{
+  background-color: yellow;
+}
+
+.color_azul{
+  background-color: blue;
+}
+
+.contenedor .cuadrado{
+  width: 200px;
+  height: 200px;
+}
+
+.fontsize20{
+  font-size: 20px;
+}
+
+.fontsize20.titulo{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#C3{
+  background-color: #730099;
+}
