@@ -1,34 +1,34 @@
 <p class="noenvolver">
 	<div id="t01">
 		{% for array in variables %}
-			<li>Nombre:{{ array.nombre }}</li>
-			<li>Apellido:{{ array.apellido }}</li>
-			<li>Nacimiento:{{ array.nacimiento }}</li>
-			<li>Dni:{{ array.dni}}</li>
-			<li>Cuit:{{ array.cuit}}</li>
+			<li>NOMBRE: {{ array.nombre }}</li>
+			<li>APELLIDO: {{ array.apellido }}</li>
+			<li>NACIMIENTO: {{ array.nacimiento }}</li>
+			<li>DNI: {{ array.dni}}</li>
+			<li>CUIT: {{ array.cuit}}</li>
 			
 			{% if array.estado_civil == 0 %}
-				<li>Estado Civil:{{'soltero'}}</li>
+				<li>ESTADO CIVIL: {{'soltero'}}</li>
 			{% else %}
-				<li>Estado Civil:{{'casado'}}</li>
+				<li>ESTADO CIVIL: {{'casado'}}</li>
 			{% endif %}
 
-			<li>Hijos:{{ array.hijos}}</li>
+			<li>HIJOS: {{ array.hijos}}</li>
 			{% if array.genero == 0 %}
-				<li>Genero:{{'hombre'}}</li>
+				<li>GENERO: {{'hombre'}}</li>
 			{% else %}
-				<li>Genero:{{'mujer'}}</li>
+				<li>GENERO: {{'mujer'}}</li>
 			{% endif %}
-			<li>Pais:{{ array.pais}}</li>
-			<li>Provincia:{{ array.provincia}}</li>
-			<li>Localidad:{{ array.localidad}}</li>
-			<li>Calle:{{ array.calle}}</li>
-			<li>Numero:{{ array.numero}}</li>
-			<li>Piso:{{ array.piso}}</li>
-			<li>Codigo Postal:{{ array.codigo_postal}}</li>
-			<li>Email:{{ array.email}}</li>
-			<li>Telefono Celular:{{ array.telefono_celular}}</li>
-			<li>Telefono Fijo:{{ array.telefono_fijo}}</li>
+			<li>PAIS: {{ array.pais}}</li>
+			<li>PROVINCIA: {{ array.provincia}}</li>
+			<li>LOCALIDAD: {{ array.localidad}}</li>
+			<li>CALLE: {{ array.calle}}</li>
+			<li>NUMERO: {{ array.numero}}</li>
+			<li>PISO: {{ array.piso}}</li>
+			<li>CODIGO POSTAL: {{ array.codigo_postal}}</li>
+			<li>E-MAIL: {{ array.email}}</li>
+			<li>TELEFONO CELULAR: {{ array.telefono_celular}}</li>
+			<li>TELEFONO FIJO: {{ array.telefono_fijo}}</li>
 
 		{% endfor %}
 	</div>

@@ -71,6 +71,11 @@ class CustomFormController
         $email = $_POST['email'];
         $telefono_celular = $_POST['telefono_celular'];
         $telefono_fijo = $_POST['telefono_fijo'];
+        /*print ( '<pre>' )  ;
+        print_r ( $_POST['nacimiento'] ) ;
+        print ( '</pre>' ) ;
+        die;*/
+        
 
         $query_to_insert = "INSERT INTO `forms` (`nombre`, `apellido`, `nacimiento`,
          `dni`, `cuit`, `estado_civil`, `hijos`, `genero`, 
