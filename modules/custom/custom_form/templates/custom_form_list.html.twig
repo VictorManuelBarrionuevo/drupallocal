@@ -10,6 +10,7 @@
 		<th>Cuit</th>
 		<th>Estado Civil</th>
 		<th>Hijos</th>
+		<th>Genero</th>
 		<th>Pais</th>
 		<th>Provincia</th>
 		<th>Localidad</th>
@@ -28,16 +29,17 @@
 			<td>{{ array.nacimiento }}</td>
 			<td>{{ array.dni}}</td>
 			<td>{{ array.cuit}}</td>
-
-
 			{% if array.estado_civil == 0 %}
 				<td>{{'soltero'}}</td>
 			{% else %}
 				<td>{{'casado'}}</td>
 			{% endif %}
-
-
 			<td>{{ array.hijos}}</td>
+			{% if array.genero == 0 %}
+				<td>{{'hombre'}}</td>
+			{% else %}
+				<td>{{'mujer'}}</td>
+			{% endif %}
 			<td>{{ array.pais}}</td>
 			<td>{{ array.provincia}}</td>
 			<td>{{ array.localidad}}</td>

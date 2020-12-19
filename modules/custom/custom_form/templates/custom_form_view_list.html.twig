@@ -6,14 +6,19 @@
 			<li>Nacimiento:{{ array.nacimiento }}</li>
 			<li>Dni:{{ array.dni}}</li>
 			<li>Cuit:{{ array.cuit}}</li>
-			<li>Estado Civil:</li>
+			
 			{% if array.estado_civil == 0 %}
-				<li>{{'soltero'}}</li>
+				<li>Estado Civil:{{'soltero'}}</li>
 			{% else %}
-				<li>{{'casado'}}</li>
+				<li>Estado Civil:{{'casado'}}</li>
 			{% endif %}
 
 			<li>Hijos:{{ array.hijos}}</li>
+			{% if array.genero == 0 %}
+				<li>Genero:{{'hombre'}}</li>
+			{% else %}
+				<li>Genero:{{'mujer'}}</li>
+			{% endif %}
 			<li>Pais:{{ array.pais}}</li>
 			<li>Provincia:{{ array.provincia}}</li>
 			<li>Localidad:{{ array.localidad}}</li>

@@ -52,6 +52,13 @@ class CustomFormController
             $est_civil = 0;
         }
         $hijos = $_POST['hijos'];
+        $genero = $_POST['genero'];
+        if ($genero == 'male') {
+            $genero = 1;
+        } else {
+            $genero = 0;
+        }
+        
         $pais = $_POST['pais'];
         $provincia = $_POST['provincia'];
         $localidad = $_POST['localidad'];
@@ -64,16 +71,16 @@ class CustomFormController
         $telefono_fijo = $_POST['telefono_fijo'];
 
         $query_to_insert = "INSERT INTO `forms` (`nombre`, `apellido`, `nacimiento`,
-         `dni`, `cuit`, `estado_civil`, `hijos`, 
+         `dni`, `cuit`, `estado_civil`, `hijos`, `genero`, 
          `id_pais`, `id_provincia`, `localidad`, `calle`, `numero`, `piso`,
          `codigo_postal`, `email`, `telefono_celular`, `telefono_fijo`) 
             VALUES ('$nombre', '$apellido', '$nacimiento', '$dni', '$cuit',
-             '$est_civil', '$hijos', '$pais', '$provincia', '$localidad', '$calle', '$numero',
+             '$est_civil', '$hijos', '$genero', '$pais', '$provincia', '$localidad', '$calle', '$numero',
              '$piso', '$codigo_postal', '$email', '$telefono_celular', '$telefono_fijo');";
         $database->query($query_to_insert);
 
         $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
-        f. estado_civil, f.hijos, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
+        f. estado_civil, f.hijos, f.genero, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
         f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo
                            FROM forms f
                            inner join paises p on f.id_pais = p.id
@@ -96,19 +103,23 @@ class CustomFormController
     {
         $database = \Drupal::database();
 
-        $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
-        f. estado_civil, f.hijos, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
-        f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo
+        
+
+        $query_get_list = " SELECT * FROM drupal8.forms where id=1;";
+
+         /*$query_get_list = " SELECT f.id=1, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
+        f. estado_civil, f.hijos, f.genero, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
+        f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo 
                            FROM forms f
                            inner join paises p on f.id_pais = p.id
-                           inner join provincias pr on f.id_provincia = pr.id;";
+                           inner join provincias pr on f.id_provincia = pr.id";*/
 
         $form_view = $database->query($query_get_list)->fetchAll();
 
-        print ( '<pre>' )  ;
+        /*print ( '<pre>' )  ;
         print_r ( $form_view ) ;
         print ( '</pre>' ) ;
-        die;
+        die;*/
 
         
         return [
