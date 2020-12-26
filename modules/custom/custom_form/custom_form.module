@@ -22,5 +22,20 @@ function custom_form_theme($existing, $type, $theme, $path)
         'template' => 'custom_form_view_list',
         'variables' => array('variables' => NULL),
     ];
+    $themes['custom_form_delete'] = [
+        'template' => 'custom_form_delete',
+        'variables' => array('variables' => NULL),
+    ];
+    $themes['custom_form_edit'] = [
+        'template' => 'custom_form_edit',
+        'variables' => array('variables' => NULL),
+    ];
+    $themes['custom_form_save_edit'] = [
+        'template' => 'custom_form_save_edit',
+        'variables' => array('variables' => NULL),
+    ];
     return $themes;
 }
+
+
+

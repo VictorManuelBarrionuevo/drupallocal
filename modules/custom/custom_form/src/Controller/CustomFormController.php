@@ -8,6 +8,7 @@
  */
 
 namespace Drupal\custom_form\Controller;
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -60,7 +61,7 @@ class CustomFormController
         } else {
             $genero = 0;
         }
-        
+
         $pais = $_POST['pais'];
         $provincia = $_POST['provincia'];
         $localidad = $_POST['localidad'];
@@ -75,7 +76,7 @@ class CustomFormController
         print_r ( $_POST['nacimiento'] ) ;
         print ( '</pre>' ) ;
         die;*/
-        
+
 
         $query_to_insert = "INSERT INTO `forms` (`nombre`, `apellido`, `nacimiento`,
          `dni`, `cuit`, `estado_civil`, `hijos`, `genero`, 
@@ -87,13 +88,12 @@ class CustomFormController
         $database->query($query_to_insert);
 
         return new RedirectResponse(\Drupal::url('custom_form.list'));
-              
     }
 
-    
-    
-    
-    
+
+
+
+
     public function list()
 
     {
@@ -107,6 +107,8 @@ class CustomFormController
 
         $form_list = $database->query($query_get_list)->fetchAll();
 
+
+
         /*print ( '<pre>' )  ;
         print_r ( $form_list ) ;
         print ( '</pre>' ) ;
@@ -116,15 +118,111 @@ class CustomFormController
             '#theme' => 'custom_form_list',
             '#variables' => $form_list,
         ];
-        
     }
-    
 
-    
-    
-        
-    
-    
+    public function delete_info(Request $request)
+
+    {
+        $form_id = $request->query->get('id');
+        $database = \Drupal::database();
+
+        $sqlborrar = "DELETE FROM forms WHERE id=$form_id;";
+        $database->query($sqlborrar);
+
+
+        echo 'alert("ELIMINADO") ';
+
+        /*print('<pre>');
+        print_r($form_id);
+        print('</pre>');
+        die;*/
+
+        $form_delete = "hola";
+        return [
+            '#theme' => 'custom_form_delete',
+            '#variables' => $form_delete
+        ];
+    }
+
+
+
+
+    public function edit_info(Request $request)
+
+    {
+        $form_id = $request->query->get('id');
+        $database = \Drupal::database();
+
+
+        $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
+        f. estado_civil, f.hijos, f.genero, p.name as pais, pr.name as provincia, f.localidad, f.calle, f.numero, f.piso, 
+        f.codigo_postal, f.email, f.telefono_celular, f.telefono_fijo
+                           FROM forms f
+                           inner join paises p on f.id_pais = p.id
+                           inner join provincias pr on f.id_provincia = pr.id
+                           where f.id=$form_id;";
+
+        $form_edit = $database->query($query_get_list)->fetchAll();
+
+
+
+
+
+        return [
+            '#theme' => 'custom_form_edit',
+            '#variables' => $form_edit
+        ];
+    }
+
+    public function save_edit(Request $request)
+
+    {
+        $form_id = $request->query->get('id');
+        $database = \Drupal::database();
+
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $nacimiento = $_POST['nacimiento'];
+        $dni = $_POST['dni'];
+        $cuit = $_POST['cuit'];
+
+        $estado_civil = $_POST['estado_civil'];
+        if ($estado_civil == 'casado') {
+            $est_civil = 1;
+        } else {
+            $est_civil = 0;
+        }
+        $hijos = $_POST['hijos'];
+        $genero = $_POST['genero'];
+        if ($genero == 'male') {
+            $genero = 1;
+        } else {
+            $genero = 0;
+        }
+
+        $calle = $_POST['calle'];
+        $numero = $_POST['numero'];
+        $piso = $_POST['piso'];
+        $codigo_postal = $_POST['codigo_postal'];
+        $email = $_POST['email'];
+        $telefono_celular = $_POST['telefono_celular'];
+        $telefono_fijo = $_POST['telefono_fijo'];
+
+        $query_to_update = "UPDATE forms SET nombre='$nombre', apellido='$apellido', nacimiento='$nacimiento', dni='$dni', cuit='$cuit', 
+                            estado_civil='$est_civil', hijos='$hijos', genero='$genero',
+                            calle=' $calle', numero='$numero', piso='$piso', codigo_postal='$codigo_postal', email='$email',
+                            telefono_celular='$telefono_celular', telefono_fijo='$telefono_fijo' WHERE id=$form_id;";
+        $database->query($query_to_update);
+
+
+        $form_save_edit = "hola";
+        return [
+            '#theme' => 'custom_form_save_edit',
+            '#variables' => $form_save_edit
+        ];
+    }
+
+
     public function view_info(Request $request)
 
     {
@@ -147,7 +245,7 @@ class CustomFormController
         print ( '</pre>' ) ;
         die;*/
 
-        
+
         return [
             '#theme' => 'custom_form_view_list',
             '#variables' => $form_view

@@ -26,3 +26,24 @@ custom_form.view_info:
     _title: 'Informacion'
   requirements:
     _permission: 'access content'
+custom_form.delete:
+  path: '/afip_form/delete'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::delete_info'
+    _title: 'Informacion Borrada'
+  requirements:
+    _permission: 'access content'
+custom_form.edit:
+  path: '/afip_form/edit'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::edit_info'
+    _title: 'Informacion editada'
+  requirements:
+    _permission: 'access content'
+custom_form.save_edit:
+  path: '/afip_form/save_edit'
+  defaults:
+    _controller: '\Drupal\custom_form\Controller\CustomFormController::save_edit'
+    _title: 'Informacion guardada'
+  requirements:
+    _permission: 'access content'

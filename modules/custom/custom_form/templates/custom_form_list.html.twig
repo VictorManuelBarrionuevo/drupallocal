@@ -6,6 +6,7 @@
 		<th>Nombre y Apellido</th>
 		<th>Dni</th>
 		<th>Email</th>
+		<th>Operators</th>
 
 	</tr>
 	{% for array in variables %}
@@ -14,7 +15,9 @@
 			<td>{{ array.dni}}</td>
 			<td>{{ array.email}}</td>
 			<td>
-				<a href="/afip_form/view?id={{ array.id }}" type="button" value="Botón" name="B4">View More</a>
+				<a href="/afip_form/view?id={{ array.id }}" type="button" value="Botón" name="view_more">View More</a>
+				<a href="/afip_form/delete?id={{ array.id }}" type="button" value="Botón" name="delete">Delete</a>
+			    <a href="/afip_form/edit?id={{ array.id }}" type="button" value="Botón" name="edit">Edit</a>
 			</td>
 		</tr>
 
