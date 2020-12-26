@@ -1,5 +1,12 @@
 name: drupallocal
 recipe: drupal8
 config:
-  drush: "*"
   webroot: .
+  xdebug: true
+  config:
+    php: ./php.ini
+services:
+  appserver:
+    overrides:
+      environment:
+        DRUSH_OPTIONS_URI: "http://drupallocal.lndo.site/"
