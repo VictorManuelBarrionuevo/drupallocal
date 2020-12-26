@@ -131,7 +131,7 @@ class CustomFormController
         $database->query($sqlborrar);
 
 
-        echo 'alert("ELIMINADO") ';
+
 
         /*print('<pre>');
         print_r($form_id);
@@ -153,6 +153,13 @@ class CustomFormController
     {
         $form_id = $request->query->get('id');
         $database = \Drupal::database();
+        $query_pais_prov = "SELECT pa.id as pais_id, pa.name as pais_name, pr.id as provincia_id, pr.name as provincia_name 
+        FROM provincias pr
+        inner join paises pa 
+        on pa.id = pr.id_pais;";
+        $pais_prov = $database->query($query_pais_prov)->fetchAll();
+        $variables = [];
+        $variables['pais_prov'] = $pais_prov;
 
 
         $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,

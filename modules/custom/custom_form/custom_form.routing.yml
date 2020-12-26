@@ -30,20 +30,20 @@ custom_form.delete:
   path: '/afip_form/delete'
   defaults:
     _controller: '\Drupal\custom_form\Controller\CustomFormController::delete_info'
-    _title: 'Informacion Borrada'
+    _title: 'Informacion Borrada Exitosamente'
   requirements:
     _permission: 'access content'
 custom_form.edit:
   path: '/afip_form/edit'
   defaults:
     _controller: '\Drupal\custom_form\Controller\CustomFormController::edit_info'
-    _title: 'Informacion editada'
+    _title: 'Informacion Editada'
   requirements:
     _permission: 'access content'
 custom_form.save_edit:
   path: '/afip_form/save_edit'
   defaults:
     _controller: '\Drupal\custom_form\Controller\CustomFormController::save_edit'
-    _title: 'Informacion guardada'
+    _title: 'Informacion Guardada Correctamente'
   requirements:
     _permission: 'access content'
