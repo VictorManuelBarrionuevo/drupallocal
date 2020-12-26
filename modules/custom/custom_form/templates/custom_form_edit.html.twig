@@ -13,21 +13,36 @@
 			<label for="cuit">CUIT:</label>
 			<input type="number" id="cuit" name="cuit" value="{{ array.cuit}}">
 			<label for="estado civil">Estado Civil:</label>
-			<label for="soltero"><input type="radio" id="soltero" name="estado_civil" value="soltero">
-				Soltero</label><br>
-			<label for="casado"><input type="radio" id="casado" name="estado_civil" value="casado">
-				Casado</label><br>
+			<option selected></option>
+
+			{% if array.estado_civil == 'soltero' %}
+				<label for="soltero"><input type="radio" id="soltero" name="estado_civil" value="soltero" checked>
+					Soltero</label><br>
+			{% else %}
+				<label for="casado"><input type="radio" id="casado" name="estado_civil" value="casado" checked>
+					Casado</label><br>
+			{% endif %}
+
+
 			<label for="hijos">Hijos:</label>
 			<input type="number" id="hijos" name="hijos" value="{{ array.hijos}}">
-		</fieldset> 
+		</fieldset>
 		<fieldset>
 			<legend>Genero:</legend>
-			<label for="male"><input class="radio_gender" type="radio" id="male" name="genero" value="male">
-				Masculino</label>
-			<label for="female"><input type="radio" id="female" name="genero" value="female">
-				Femenino</label>
-			<label for="other"><input type="radio" id="other" name="genero" value="other">
-				Otro</label>
+
+
+			{% if array.genero == 'male' %}
+				<label for="male"><input class="radio_gender" type="radio" id="male" name="genero" value="male" checked>
+					Masculino</label>
+			{% else %}
+				<label for="female"><input type="radio" id="female" name="genero" value="female" checked>
+					Femenino</label>
+			{% elseif %}
+				<label for="other"><input type="radio" id="other" name="genero" value="other" checked>
+					Otro</label>
+
+			{% endif %}
+
 
 			<div id="especificar">
 				<label for="otro_genero">Especifique cual:</label>
