@@ -11,6 +11,7 @@ namespace Drupal\custom_form\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\Core\Messenger\MessengerInterface;
 
 class CustomFormController
 {
@@ -34,6 +35,8 @@ class CustomFormController
         $pais_prov = $database->query($query_pais_prov)->fetchAll();
         $variables = [];
         $variables['pais_prov'] = $pais_prov;
+
+        
 
         return [
             '#theme' => 'custom_form',
@@ -87,7 +90,10 @@ class CustomFormController
              '$est_civil', '$hijos', '$genero', '$pais', '$provincia', '$localidad', '$calle', '$numero',
              '$piso', '$codigo_postal', '$email', '$telefono_celular', '$telefono_fijo');";
         $database->query($query_to_insert);
+        
 
+    
+        \Drupal::messenger()->addMessage(('Usuario'.' '.  ($nombre = $_POST['nombre']) .' ' .  ($apellido = $_POST['apellido']).' ' .'Guardado Exitosamente'), 'warning');
         return new RedirectResponse(\Drupal::url('custom_form.list'));
     }
 
@@ -125,24 +131,22 @@ class CustomFormController
 
     {
         $form_id = $request->query->get('id');
+        $form_nombre = $request->query->get('nombre');
+        $form_apellido = $request->query->get('apellido');
+
+
         $database = \Drupal::database();
 
         $sqlborrar = "DELETE FROM forms WHERE id=$form_id;";
         $database->query($sqlborrar);
 
+        
 
 
 
-        /*print('<pre>');
-        print_r($form_id);
-        print('</pre>');
-        die;*/
 
-        $form_delete = "hola";
-        return [
-            '#theme' => 'custom_form_delete',
-            '#variables' => $form_delete
-        ];
+        \Drupal::messenger()->addMessage(('Usuario'.' '.  ($form_nombre).' '.  ($form_apellido).' ' .'Borrado Exitosamente'), 'error');
+        return new RedirectResponse(\Drupal::url('custom_form.list'));
     }
 
 
@@ -152,14 +156,16 @@ class CustomFormController
 
     {
         $form_id = $request->query->get('id');
+        $form_nombre = $request->query->get('nombre');
+
         $database = \Drupal::database();
+
         $query_pais_prov = "SELECT pa.id as pais_id, pa.name as pais_name, pr.id as provincia_id, pr.name as provincia_name 
         FROM provincias pr
         inner join paises pa 
         on pa.id = pr.id_pais;";
         $pais_prov = $database->query($query_pais_prov)->fetchAll();
-        $variables = [];
-        $variables['pais_prov'] = $pais_prov;
+        
 
 
         $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
@@ -172,13 +178,25 @@ class CustomFormController
 
         $form_edit = $database->query($query_get_list)->fetchAll();
 
+        
+        $array_vars= [];
+        $array_vars['pais_prov'] = $pais_prov;
+        $array_vars['form_edit'] = $form_edit;
 
 
+
+
+
+
+        /*print ( '<pre>' )  ;
+        print_r ( $array_vars['num_random']  ) ;
+        print ( '</pre>' ) ;
+        die;*/
 
 
         return [
             '#theme' => 'custom_form_edit',
-            '#variables' => $form_edit
+            '#array_vars' => $array_vars
         ];
     }
 
@@ -223,11 +241,8 @@ class CustomFormController
         $database->query($query_to_update);
 
 
-        $form_save_edit = "hola";
-        return [
-            '#theme' => 'custom_form_save_edit',
-            '#variables' => $form_save_edit
-        ];
+        \Drupal::messenger()->addMessage(('Usuario'.' '.  ($nombre = $_POST['nombre']) .' ' .  ($apellido = $_POST['apellido']).' ' .'Editado Exitosamente'), 'warning');
+        return new RedirectResponse(\Drupal::url('custom_form.list'));
     }
 
 
@@ -251,8 +266,9 @@ class CustomFormController
         /*print ( '<pre>' )  ;
         print_r ( $form_view ) ;
         print ( '</pre>' ) ;
-        die;*/
+        die;
 
+        \Drupal::messenger()->addWarning(t('This is a warning message.'));*/
 
         return [
             '#theme' => 'custom_form_view_list',

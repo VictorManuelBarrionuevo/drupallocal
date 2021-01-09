@@ -1,4 +1,4 @@
-{% for array in variables %}
+{% for array in array_vars.form_edit %}
 	<form action="/afip_form/save_edit?id={{ array.id }}" method="POST">
 		<fieldset>
 			<legend>Informacion Personal:</legend>
@@ -60,11 +60,11 @@
 			<legend>Direccion:</legend>
 			<div id="dropdown">
 				<label for="pais">Pais:</label>
-				<select id="pais" name="pais" value="{{ array.pais}}"></select>
+				<select id="pais" name="pais" value="{{ array.pais}}" selected></select>
 			</div>
 			<div>
 				<label for="provincia">Provincia:</label>
-				<select id="provincia" name="provincia" value="{{ array.provincia}}"></select>
+				<select id="provincia" name="provincia" value="{{ array.provincia}}" selected></select>
 			</div>
 
 			<label for="localidad">Localidad:</label>
@@ -108,8 +108,9 @@
 		</fieldset>
 	</form>
 {% endfor %}
-<div id="pais_prov">
-	{% for pais_prov in variables.pais_prov %}
+<div style="display:none" id="pais_prov">
+	{% for pais_prov in array_vars.pais_prov %}
 		<li pais-id="{{pais_prov.pais_id}}" pais-name="{{pais_prov.pais_name}}" provincia-id="{{pais_prov.provincia_id}}" provincia-name="{{pais_prov.provincia_name}}">
-		{% endfor %}
+	{% endfor %}
 </div>
+

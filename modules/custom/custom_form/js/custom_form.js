@@ -10,11 +10,12 @@
     });
 
     window.options_for_paises =
-      "<option selected disabled hidden style='display: none' value=''>--Seleccionar pais--</option>";
+     "<option selected disabled hidden value=''>--Seleccionar pais--</option>";
     array_paises.forEach(function (pais, key) {
       options_for_paises += '<option value="' + key + '">' + pais + "</option>";
     });
     $("#pais").html(options_for_paises);
+
 
     $("#pais").on("change", function () {
       window.id_pais_seleccionado = $(this).val();

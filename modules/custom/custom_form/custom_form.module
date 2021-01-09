@@ -28,7 +28,7 @@ function custom_form_theme($existing, $type, $theme, $path)
     ];
     $themes['custom_form_edit'] = [
         'template' => 'custom_form_edit',
-        'variables' => array('variables' => NULL),
+        'variables' => array('array_vars' => NULL),
     ];
     $themes['custom_form_save_edit'] = [
         'template' => 'custom_form_save_edit',
