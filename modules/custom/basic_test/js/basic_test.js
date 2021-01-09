@@ -1,6 +1,57 @@
 (function ($) {
     $(document).ready(function () {
-        $("#cua_3").hide();
+
+        $(".botones").click(function () {
+            var valor_boton_presionado = $(this).val();
+            var valor_previo = $("#visor").val();
+            var concatenacion = valor_previo + valor_boton_presionado;
+            $("#visor").val(concatenacion);
+        });
+
+        $(".limpiar").click(function () {
+            $("#visor").val("");
+        });
+
+        $(".calcular").click(function () {
+            var visor = $("#visor").val();
+            var visor_split = visor.split("+");
+            window.array_para_sumar = [];
+            window.array_para_restar = [];
+
+            visor_split.forEach(function (valor, indice, a) {
+                var visor_split_negativo = valor.split("-");
+                window.num_total = 0;
+                if (visor_split_negativo.length > 1) {
+                    visor_split_negativo.forEach(function (valor, i, array) {
+                        if(i == 0){
+                            array_para_sumar.push(array[i]);
+                        } else {
+                            array_para_restar.push(array[i]);
+                        }
+                    });
+                } else {
+                    array_para_sumar.push(a[indice]);
+                }
+            });
+
+            window.total_suma = 0;
+            window.total_resta = 0;
+
+            array_para_sumar.forEach(function (v, i, array) {
+                var num = parseFloat(v);
+                total_suma = total_suma + num;
+            });
+
+            array_para_restar.forEach(function (v, i, array) {
+                var num = parseFloat(v);
+                total_resta = total_resta + num;
+            });
+
+            var result = total_suma - total_resta;
+            $("#visor").val(result);
+        });
+
+        /*$("#cua_3").hide();
 
         $(".cuadrado_test_tamano").click(function () {
             var min = 50;
@@ -21,7 +72,7 @@
             var random = Math.floor(Math.random() * (max - min + 1)) + min;
             $(".cuadrado_test_hover").css("left", random);
 
-        });
+        });*/
 
     });
 })(jQuery);
