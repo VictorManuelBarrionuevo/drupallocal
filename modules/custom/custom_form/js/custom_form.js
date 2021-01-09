@@ -48,13 +48,25 @@
       }
     });
 
-    $("#alertbox").click(function () {
-      window.location.href = "https://drupallocal.lndo.site/afip_form/list";
-    });
 
-    $("#alertbox2").click(function () {
-        window.location.href = "https://drupallocal.lndo.site/afip_form/list";
-      });
+
+  });
+
+
+
+
+})(jQuery);
+
+
+
+
+
+(function ($) {
+  $(document).ready(function () {
+    
+
+
+//traer el valor (array.provincia) de pais y prov y ponerle la opcion selected val() en el html option
 
 
   });

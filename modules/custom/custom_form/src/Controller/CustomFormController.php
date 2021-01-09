@@ -156,7 +156,7 @@ class CustomFormController
 
     {
         $form_id = $request->query->get('id');
-        $form_nombre = $request->query->get('nombre');
+        
 
         $database = \Drupal::database();
 
@@ -178,20 +178,37 @@ class CustomFormController
 
         $form_edit = $database->query($query_get_list)->fetchAll();
 
+        $query_get_pais_prov = " SELECT p.name as pais, pr.name as provincia
+                           FROM forms f
+                           inner join paises p on f.id_pais = p.id
+                           inner join provincias pr on f.id_provincia = pr.id
+                           where f.id=$form_id;";
+
+        $form_pais_prov = $database->query($query_get_pais_prov)->fetchAll();
+                           
+
         
         $array_vars= [];
         $array_vars['pais_prov'] = $pais_prov;
         $array_vars['form_edit'] = $form_edit;
+        $array_vars['form_pais_prov'] = $form_pais_prov;
 
 
-
-
-
-
-        /*print ( '<pre>' )  ;
-        print_r ( $array_vars['num_random']  ) ;
+       /* print ( '<pre>' )  ;
+        print_r ( $form_pais_prov  ) ;
         print ( '</pre>' ) ;
-        die;*/
+        die;
+
+
+        /*Array
+
+    [0] => stdClass Object
+        (
+            [pais] => Brazil
+            [provincia] => Sao Pablo
+        )*/
+
+//quiero traer y seleccionar el valor pais y provincia, para poder igualarlo y poder enviarlo a jquery para poder ponerle un selected ahi
 
 
         return [

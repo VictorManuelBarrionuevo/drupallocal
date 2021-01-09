@@ -1,3 +1,10 @@
+{% for array in array_vars.form_pais_prov %}
+    <p>{{ array.provincia}}</p>
+{% endfor %}
+
+
+
+
 {% for array in array_vars.form_edit %}
 	<form action="/afip_form/save_edit?id={{ array.id }}" method="POST">
 		<fieldset>
