@@ -2,10 +2,19 @@
     $(document).ready(function () {
 
         $(".botones").click(function () {
-            var valor_boton_presionado = $(this).val();
+            var allows = ["0","1","2","3","4","5","6","7","8","9","+","-"];
             var valor_previo = $("#visor").val();
-            var concatenacion = valor_previo + valor_boton_presionado;
-            $("#visor").val(concatenacion);
+            var valor_boton_presionado = $(this).val();
+            //si el string termina en + o -
+            //y el valor_boton_presionado es + o -
+            //no cambiar el valor del visor
+            
+
+
+            if(allows.indexOf(valor_boton_presionado) > -1){
+                var concatenacion = valor_previo + valor_boton_presionado;
+                $("#visor").val(concatenacion);
+            }
         });
 
         $(".limpiar").click(function () {
@@ -50,6 +59,8 @@
             var result = total_suma - total_resta;
             $("#visor").val(result);
         });
+        
+        
 
         /*$("#cua_3").hide();
 
