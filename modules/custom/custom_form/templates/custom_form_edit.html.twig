@@ -1,10 +1,3 @@
-{% for array in array_vars.form_pais_prov %}
-    <p>{{ array.provincia}}</p>
-{% endfor %}
-
-
-
-
 {% for array in array_vars.form_edit %}
 	<form action="/afip_form/save_edit?id={{ array.id }}" method="POST">
 		<fieldset>
@@ -67,11 +60,11 @@
 			<legend>Direccion:</legend>
 			<div id="dropdown">
 				<label for="pais">Pais:</label>
-				<select id="pais" name="pais" value="{{ array.pais}}" selected></select>
+				<select id="pais" name="pais" value=""></select>
 			</div>
-			<div>
+			<div class="ocultar">
 				<label for="provincia">Provincia:</label>
-				<select id="provincia" name="provincia" value="{{ array.provincia}}" selected></select>
+				<select id="provincia" name="provincia" ></select>
 			</div>
 
 			<label for="localidad">Localidad:</label>
@@ -115,9 +108,15 @@
 		</fieldset>
 	</form>
 {% endfor %}
-<div style="display:none" id="pais_prov">
+<div  id="pais_prov">
 	{% for pais_prov in array_vars.pais_prov %}
-		<li pais-id="{{pais_prov.pais_id}}" pais-name="{{pais_prov.pais_name}}" provincia-id="{{pais_prov.provincia_id}}" provincia-name="{{pais_prov.provincia_name}}">
+		<li pais-id="{{pais_prov.pais_id}}" pais-name="{{pais_prov.pais_name}}"
+		 provincia-id="{{pais_prov.provincia_id}}" provincia-name="{{pais_prov.provincia_name}}" elemento-seleccionado="{{pais_prov.elemento_selected}}">
 	{% endfor %}
 </div>
 
+
+{% if pais_prov.elemento_selected == '1' %} innnnnnNNNNNNNnnecesario
+  <li elemento-seleccionado="{{pais_prov.elemento_selected}}">
+
+{% endif %}

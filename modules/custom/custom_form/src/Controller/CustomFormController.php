@@ -36,7 +36,7 @@ class CustomFormController
         $variables = [];
         $variables['pais_prov'] = $pais_prov;
 
-        
+
 
         return [
             '#theme' => 'custom_form',
@@ -90,10 +90,10 @@ class CustomFormController
              '$est_civil', '$hijos', '$genero', '$pais', '$provincia', '$localidad', '$calle', '$numero',
              '$piso', '$codigo_postal', '$email', '$telefono_celular', '$telefono_fijo');";
         $database->query($query_to_insert);
-        
 
-    
-        \Drupal::messenger()->addMessage(('Usuario'.' '.  ($nombre = $_POST['nombre']) .' ' .  ($apellido = $_POST['apellido']).' ' .'Guardado Exitosamente'), 'warning');
+
+
+        \Drupal::messenger()->addMessage(('Usuario' . ' ' .  ($nombre = $_POST['nombre']) . ' ' .  ($apellido = $_POST['apellido']) . ' ' . 'Guardado Exitosamente'), 'warning');
         return new RedirectResponse(\Drupal::url('custom_form.list'));
     }
 
@@ -140,12 +140,12 @@ class CustomFormController
         $sqlborrar = "DELETE FROM forms WHERE id=$form_id;";
         $database->query($sqlborrar);
 
-        
 
 
 
 
-        \Drupal::messenger()->addMessage(('Usuario'.' '.  ($form_nombre).' '.  ($form_apellido).' ' .'Borrado Exitosamente'), 'error');
+
+        \Drupal::messenger()->addMessage(('Usuario' . ' ' .  ($form_nombre) . ' ' .  ($form_apellido) . ' ' . 'Borrado Exitosamente'), 'error');
         return new RedirectResponse(\Drupal::url('custom_form.list'));
     }
 
@@ -156,7 +156,7 @@ class CustomFormController
 
     {
         $form_id = $request->query->get('id');
-        
+
 
         $database = \Drupal::database();
 
@@ -165,7 +165,10 @@ class CustomFormController
         inner join paises pa 
         on pa.id = pr.id_pais;";
         $pais_prov = $database->query($query_pais_prov)->fetchAll();
-        
+
+
+
+
 
 
         $query_get_list = " SELECT f.id, f.nombre, f.apellido, f.nacimiento, f.dni, f.cuit,
@@ -178,37 +181,28 @@ class CustomFormController
 
         $form_edit = $database->query($query_get_list)->fetchAll();
 
-        $query_get_pais_prov = " SELECT p.name as pais, pr.name as provincia
-                           FROM forms f
-                           inner join paises p on f.id_pais = p.id
-                           inner join provincias pr on f.id_provincia = pr.id
-                           where f.id=$form_id;";
 
-        $form_pais_prov = $database->query($query_get_pais_prov)->fetchAll();
-                           
+        $provincia_seleccionada = $form_edit[0]->provincia; //me salia en blanco por eso va el subzero, con la flecha es para un objeto y aca me sale el nombre de provincia (chubut)
 
-        
-        $array_vars= [];
+
+        foreach ($pais_prov as $key => $value) { //luego entro al arry pais_prov y lo recorro como key ->value, para pasar por todos los elementos del arraya hatsa llegar al resultado seleccionado
+            if ($value->provincia_name == $provincia_seleccionada) { //si el value provincia_name(chubut) es igual a provincia_seleccioanda, paso al siguiente tema
+                $pais_prov[$key]->elemento_selected = 1;             //ahora a pais_prov key subzero le añado el objeto elemento selected y le igualo el 1
+
+            }         //lo que quizimos hacer aca es marcar el elemento seleccioando, de manera que cuando salga todo el array en el elemento seleccioando se le agregue un objeto llamado(elemento selected)
+            //para luego enviarlo al twig(donde tambien le vamos agregar el elemento selected(mediante logica) enetonces con js lo vamos a encotrar y )
+        }
+        /*print('<pre>');
+        print_r($pais_prov);
+
+        print('</pre>');
+        die;*/
+
+
+
+        $array_vars = [];
         $array_vars['pais_prov'] = $pais_prov;
         $array_vars['form_edit'] = $form_edit;
-        $array_vars['form_pais_prov'] = $form_pais_prov;
-
-
-       /* print ( '<pre>' )  ;
-        print_r ( $form_pais_prov  ) ;
-        print ( '</pre>' ) ;
-        die;
-
-
-        /*Array
-
-    [0] => stdClass Object
-        (
-            [pais] => Brazil
-            [provincia] => Sao Pablo
-        )*/
-
-//quiero traer y seleccionar el valor pais y provincia, para poder igualarlo y poder enviarlo a jquery para poder ponerle un selected ahi
 
 
         return [
@@ -242,7 +236,8 @@ class CustomFormController
         } else {
             $genero = 0;
         }
-
+        $pais = $_POST['pais'];
+        $provincia = $_POST['provincia'];
         $calle = $_POST['calle'];
         $numero = $_POST['numero'];
         $piso = $_POST['piso'];
@@ -252,13 +247,13 @@ class CustomFormController
         $telefono_fijo = $_POST['telefono_fijo'];
 
         $query_to_update = "UPDATE forms SET nombre='$nombre', apellido='$apellido', nacimiento='$nacimiento', dni='$dni', cuit='$cuit', 
-                            estado_civil='$est_civil', hijos='$hijos', genero='$genero',
+                            estado_civil='$est_civil', hijos='$hijos', genero='$genero', id_pais='$pais', id_provincia='$provincia',
                             calle=' $calle', numero='$numero', piso='$piso', codigo_postal='$codigo_postal', email='$email',
                             telefono_celular='$telefono_celular', telefono_fijo='$telefono_fijo' WHERE id=$form_id;";
         $database->query($query_to_update);
 
 
-        \Drupal::messenger()->addMessage(('Usuario'.' '.  ($nombre = $_POST['nombre']) .' ' .  ($apellido = $_POST['apellido']).' ' .'Editado Exitosamente'), 'warning');
+        \Drupal::messenger()->addMessage(('Usuario' . ' ' .  ($nombre = $_POST['nombre']) . ' ' .  ($apellido = $_POST['apellido']) . ' ' . 'Editado Exitosamente'), 'warning');
         return new RedirectResponse(\Drupal::url('custom_form.list'));
     }
 
