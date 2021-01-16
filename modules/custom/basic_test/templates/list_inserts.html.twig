@@ -1,0 +1,8 @@
+{#{ dump(vars) }#}
+
+
+<ol>
+	{% for var in vars %}
+		<li>{{ var.nombre }} {{ var.apellido }}</li>
+	{% endfor %}
+</ol>

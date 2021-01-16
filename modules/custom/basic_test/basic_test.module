@@ -20,5 +20,16 @@ function basic_test_theme($existing, $type, $theme, $path)
         'template' => 'basic-test',
         'variables' => array('array_vars' => NULL),
     ];
+
+    $themes['success_insert_twig'] = [
+        'template' => 'inserts',
+        'variables' => array('vars' => NULL),
+    ];
+
+    $themes['list_page'] = [
+        'template' => 'list_inserts',
+        'variables' => array('vars' => NULL),
+    ];
+
     return $themes;
 }
