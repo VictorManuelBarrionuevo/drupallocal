@@ -5,3 +5,19 @@ basic_test.home:
     _title: 'Primer Pagina'
   requirements:
     _permission: 'access content'
+
+basic_test.form_insert:
+  path: '/form_insert'
+  defaults:
+    _controller: '\Drupal\basic_test\Controller\BasicTestController::insercion'
+    _title: 'test de insert'
+  requirements:
+    _permission: 'access content'
+
+basic_test.list_inserts:
+  path: '/list_inserts'
+  defaults:
+    _controller: '\Drupal\basic_test\Controller\BasicTestController::get_inserts'
+    _title: 'listado de insert'
+  requirements:
+    _permission: 'access content'
