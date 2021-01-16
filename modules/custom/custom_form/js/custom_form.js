@@ -26,6 +26,46 @@
 
     $("#pais").html(options_for_paises);
 
+
+
+
+
+      window.array_provincias_selected = [];
+      $("#pais_prov li").each(function () {
+      var pais_selected = $(this).attr("elemento-seleccionado");
+      var provincia_id = $(this).attr("provincia-id");
+      var provincia_name = $(this).attr("provincia-name");
+      array_provincias_selected[provincia_id] = provincia_name;
+      if (pais_selected == 1) {
+        window.options_for_provincia_selected +=
+          '<option selected disabled hidden [value="' +
+          pais_selected +
+          '"]>' +
+          provincia_name +
+          "</option>";
+       }
+       else{
+        window.options_for_provincia_selected +="";
+       }
+       });
+    
+       options_for_provincia_selected +="";
+   
+
+       $("#provincia").html(options_for_provincia_selected);
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     $("#pais").on("change", function () {
       window.id_pais_seleccionado = $(this).val();
       window.array_provincias = [];
