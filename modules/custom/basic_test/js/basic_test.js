@@ -5,9 +5,13 @@
             var allows = ["0","1","2","3","4","5","6","7","8","9","+","-"];
             var valor_previo = $("#visor").val();
             var valor_boton_presionado = $(this).val();
-            //si el string termina en + o -
-            //y el valor_boton_presionado es + o -
-            //no cambiar el valor del visor
+            
+            var lastChar = valor_previo.substr(valor_previo.length - 1);
+            if(lastChar == "+" || lastChar == "-"){
+                if(valor_boton_presionado == lastChar){
+                    return;
+                }
+            }
             
 
 
