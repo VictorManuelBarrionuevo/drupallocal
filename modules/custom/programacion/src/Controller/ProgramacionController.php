@@ -95,6 +95,11 @@ class ProgramacionController
                 $matQuery = "SELECT nombre FROM materias where id = $idEx;";
                 $nombre_materia = $database->query($matQuery)->fetchAll();
                 $alumno->materias[] = $nombre_materia[0]->nombre;
+
+            /*print_r('<PRE>');
+            print_r($nombre_materia);
+            print_r('</PRE>');
+            die();*/
             }
         }
 
@@ -108,6 +113,10 @@ class ProgramacionController
         $array_vars['grado_selected'] = $grado;
         $array_vars['maestro_selected'] = $maestro_id;
         $array_vars['materia_selected'] = $materia_id;
+         /*print_r('<PRE>');
+            print_r($nombre_materia);
+            print_r('</PRE>');
+            die();*/
         
         return [
             '#theme' => 'theme_test1',
