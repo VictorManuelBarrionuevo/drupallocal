@@ -1,8 +1,17 @@
 {#{ dump(vars) }#}
+<div>
+	<a id="" class="add_button" href="/add_new">Add New</a>
+</div>
 
+<div class="form_list">
+	<ol>
+		{% for var in vars.listado %}
+			<li>{{ var.nombre }}
+				{{ var.apellido }}</li>
+		{% endfor %}
+	</ol>
+</div>
 
-<ol>
-	{% for var in vars %}
-		<li>{{ var.nombre }} {{ var.apellido }}</li>
-	{% endfor %}
-</ol>
+{% for page in vars.pages %}
+	<a href='/?page={{page}}'>{{page}}</a>
+{% endfor %}

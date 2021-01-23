@@ -1,7 +1,7 @@
-basic_test.home:
-  path: '/basic_test_page'
+basic_test.add_new:
+  path: '/add_new'
   defaults:
-    _controller: '\Drupal\basic_test\Controller\BasicTestController::hola_mundo'
+    _controller: '\Drupal\basic_test\Controller\BasicTestController::add_new'
     _title: 'Primer Pagina'
   requirements:
     _permission: 'access content'
