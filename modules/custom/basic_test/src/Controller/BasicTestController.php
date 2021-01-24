@@ -68,6 +68,7 @@ class BasicTestController
         $query_count = "select COUNT(*) as amount FROM inserts;";
         $cantidad_inserts = $database->query($query_count)->fetch();
         $amount = $cantidad_inserts->amount;
+
         $cant_paginas = intval((int)$amount / 10) + 1;
 
         $pages = [];
@@ -76,13 +77,22 @@ class BasicTestController
         }
 
         $pagina_requerida = $_GET["page"];
-        $offset = ((int)$pagina_requerida -1)*10;
+        $offset = ((int)$pagina_requerida ) * 10;
+        /*print('<pre>');
+        print_r($offset);
+        print('</pre>');
+        die();*/
 
         $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
         $listado = $database->query($query)->fetchAll();
+        /*print('<pre>');
+        print_r($listado);
+        print('</pre>');
+        die();*/
         $vars = [];
         $vars['listado'] = $listado;
         $vars['pages'] = $pages;
+
 
         return [
             '#theme' => 'list_page',
