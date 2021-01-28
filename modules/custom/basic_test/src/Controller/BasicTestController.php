@@ -75,8 +75,13 @@ class BasicTestController
             $pages[] = $i;
         }
 
-        $pagina_requerida = $_GET["page"];
-        $offset = ((int)$pagina_requerida -1)*10;
+        if (isset($_GET["page"])) {
+            $pagina_requerida = $_GET["page"];
+        } else {
+            $pagina_requerida = 1;
+        }
+
+        $offset = ((int)$pagina_requerida - 1) * 10;
 
         $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
         $listado = $database->query($query)->fetchAll();
