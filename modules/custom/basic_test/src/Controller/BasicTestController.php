@@ -195,11 +195,11 @@ class BasicTestController
         } else {
             $pagina_requerida = 1;
         }
-        $offset = ((int)$pagina_requerida - 1 ) * 10;
-        print('<pre>');
-        print_r($offset);
+       $offset = ((int)$pagina_requerida - 1 ) * 10;
+         /*print('<pre>');
+        print_r($offset);s
         print('</pre>');
-        die();
+        die();*/
 
         $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
         $listado = $database->query($query)->fetchAll();
