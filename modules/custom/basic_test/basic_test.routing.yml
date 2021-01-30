@@ -21,3 +21,11 @@ basic_test.list_inserts:
     _title: 'listado de insert'
   requirements:
     _permission: 'access content'
+
+basic_test.get_provincias:
+  path: '/get_provincias_by_id_pais/{id_pais}'
+  defaults:
+    _controller: '\Drupal\basic_test\Controller\BasicTestController::get_provincias'
+    _title: 'get provincias'
+  requirements:
+    _permission: 'access content'

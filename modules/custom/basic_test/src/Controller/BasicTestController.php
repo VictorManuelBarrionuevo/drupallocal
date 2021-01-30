@@ -9,6 +9,7 @@
 
 namespace Drupal\basic_test\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class BasicTestController
@@ -22,8 +23,14 @@ class BasicTestController
      */
     public function add_new()
     {
+        //buscar en la base todos los registros de pais
+        $database = \Drupal::database();
+        $query_pais = "SELECT * FROM paises";
+        $paises = $database->query($query_pais)->fetchAll();
+        $vars['paises'] = $paises;
         return [
-            '#theme' => 'basic_test_theme_test'
+            '#theme' => 'basic_test_theme_test',
+            '#vars' => $vars
         ];
     }
 
@@ -36,12 +43,12 @@ class BasicTestController
         $errores = [];
         $database = \Drupal::database();
 
-        if (isset($_GET['nombre'])) {
+        if (isset($_GET['nombre']) && $_GET['nombre'] != '') {
             $nombre = $_GET['nombre'];
         } else {
             $errores[] = "El campo Nombre es requerido";
         }
-        if (isset($_GET['apellido'])) {
+        if (isset($_GET['apellido']) && $_GET['apellido'] != '') {
             $apellido = $_GET['apellido'];
         } else {
             $errores[] = "El campo Apellido es requerido";
@@ -83,7 +90,7 @@ class BasicTestController
 
         $offset = ((int)$pagina_requerida - 1) * 10;
 
-        $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
+        $query = "SELECT * FROM inserts limit 10 offset $offset;";
         $listado = $database->query($query)->fetchAll();
         $vars = [];
         $vars['listado'] = $listado;
@@ -93,5 +100,17 @@ class BasicTestController
             '#theme' => 'list_page',
             '#vars' => $vars
         ];
+    }
+
+    public function get_provincias($id_pais)
+    {
+        //buscar en la base las provincias que tengan el id_pais = $id_pais
+        $database = \Drupal::database();
+        $query_provincias = "SELECT * FROM provincias WHERE id_pais = $id_pais";
+        $provincias = $database->query($query_provincias)->fetchAll();
+        return new JsonResponse([
+            'data' => $provincias,
+            'method' => 'GET',
+        ]);
     }
 }
