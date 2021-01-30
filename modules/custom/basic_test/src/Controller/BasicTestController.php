@@ -169,20 +169,33 @@ class BasicTestController
         $query_count = "select COUNT(*) as amount FROM inserts;";
         $cantidad_inserts = $database->query($query_count)->fetch();
         $amount = $cantidad_inserts->amount;
+         /*print('<pre>');
+        print_r($amount);
+        print('</pre>');
+        die();*/
 
         $cant_paginas = intval((int)$amount / 10) + 1;
+        /*print('<pre>');
+        print_r($cant_paginas);
+        print('</pre>');
+        die();*/
+
 
         $pages = [];
         for ($i = 1; $i < $cant_paginas + 1; $i++) {
             $pages[] = $i;
         }
+        /*print('<pre>');
+        print_r($pages);
+        print('</pre>');
+        die();*/
 
         $pagina_requerida = $_GET["page"];
         $offset = ((int)$pagina_requerida ) * 10;
-        /*print('<pre>');
-        print_r($offset);
+        print('<pre>');
+        print_r($pagina_requerida);
         print('</pre>');
-        die();*/
+        die();
 
         $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
         $listado = $database->query($query)->fetchAll();
@@ -201,3 +214,28 @@ class BasicTestController
         ];
     }
 }
+/*
+        $database = \Drupal::database();
+        $query_count = "select COUNT(*) as amount FROM inserts;";
+        $cantidad_inserts = $database->query($query_count)->fetch();
+        $amount = $cantidad_inserts->amount;
+        $cant_paginas = intval((int)$amount / 10) + 1;
+
+        $pages = [];
+        for ($i = 1; $i < $cant_paginas + 1; $i++) {
+            $pages[] = $i;
+        }
+
+        $pagina_requerida = $_GET["page"];
+        $offset = ((int)$pagina_requerida -1)*10;
+
+        $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
+        $listado = $database->query($query)->fetchAll();
+        $vars = [];
+        $vars['listado'] = $listado;
+        $vars['pages'] = $pages;
+
+        return [
+            '#theme' => 'list_page',
+            '#vars' => $vars
+        ];*/
