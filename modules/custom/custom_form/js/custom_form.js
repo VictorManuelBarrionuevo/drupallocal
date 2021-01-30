@@ -1,4 +1,4 @@
-(function ($) {
+/*(function ($) {
   $(document).ready(function () {
     //$("input").prop('required',true);
     $(".ocultar").hide();
@@ -88,3 +88,4 @@
 })(jQuery);
 
 
+*/
