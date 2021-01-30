@@ -1,123 +1,91 @@
 <form action="/form_insert">
-  <label for="nombre">Nombre:</label><br>
-  <input type="text" id="nombre" name="nombre" placeholder="Juan"><br>
+	<fieldset>
+		<legend>Informacion Personal:</legend>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" value="">
+		<label for="apellido">Apellido:</label>
+		<input type="text" id="apellido" name="apellido" value="">
+		<label for="nacimiento">Fecha de nacimiento:</label>
+		<input type="date" id="nacimiento" name="nacimiento">
+		<label for="dni">DNI:</label>
+		<input type="number" id="dni" name="dni" value="">
+		<label for="cuit">CUIT:</label>
+		<input type="number" id="cuit" name="cuit" value="">
+		<label for="estado civil">Estado Civil:</label>
+		<label for="soltero"><input type="radio" id="soltero" name="estado_civil" value="soltero">
+			Soltero</label><br>
+		<label for="casado"><input type="radio" id="casado" name="estado_civil" value="casado">
+			Casado</label><br>
+		<label for="hijos">Hijos:</label>
+		<input type="number" id="hijos" name="hijos" value="">
+	</fieldset>
+	<fieldset>
+		<legend>Genero:</legend>
+		<label for="male"><input class="radio_gender" type="radio" id="male" name="genero" value="male">
+			Masculino</label>
+		<label for="female"><input type="radio" id="female" name="genero" value="female">
+			Femenino</label>
+		<label for="other"><input type="radio" id="other" name="genero" value="other">
+			Otro</label>
 
-  <label for="apellido">Apellido:</label><br>
-  <input type="text" id="apellido" name="apellido" placeholder="Perez"><br><br>
+		<div id="especificar">
+			<label for="otro_genero">Especifique cual:</label>
+			<input type="text" id="otro_genero" name="otro_genero" value="">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Direccion:</legend>
+		<div>
+			<label for="pais">Pais:</label>
+			<select name="pais" id="pais">
+				<option value="argentina">Argentina</option>
+				<option value="brasil">Brasil</option>
+				<option value="chile">Chile</option>
+				<option value="uruguay">Uruguay</option>
+			</select>
+		</div>
+		<div>
+			<label for="provincia">Provincia:</label>
+			<input type="text" id="provincia" name="provincia" value="">
+		</div>
 
-  <input type="submit" value="Submit">
+		<label for="localidad">Localidad:</label>
+		<input type="text" id="localidad" name="localidad" value="">
+		<label for="calle">Calle:</label>
+		<input type="text" id="calle" name="calle" value="">
+		<label for="numero">Numero:</label>
+		<input type="number" id="numero" name="numero" value="">
+		<label for="piso">Piso:</label>
+		<input type="number" id="piso" name="piso" value="">
+		<label for="codigo postal">Codigo Postal:</label>
+		<input type="number" id="codigo_postal" name="codigo_postal" value="">
+	</fieldset>
+	<fieldset>
+		<legend>Datos de contacto:</legend>
+		<label for="email">E-mail:</label>
+		<input type="email" id="email" name="email">
+		<label for="telefono celular">Telefono celular:</label>
+		<input type="number" id="telefono_celular" name="telefono_celular" value="">
+		<label for="telefono fijo">Telefono fijo:</label>
+		<input type="number" id="telefono_fijo" name="telefono_fijo" value="">
+	</fieldset>
+	<fieldset>
+		<fieldset>
+			<label for="user">Usuario:</label>
+			<input type="text" id="user" name="user" value="">
+			<label for="password">Contraseña:</label>
+			<input type="password" id="password" name="password">
+		</fieldset>
+		<fieldset>
+			<label for="not1"><input type="checkbox" id="not1" name="recibir_notificaciones">
+				¿Desea recibir notificaciones?:</label><br>
+			<label for="not2"><input type="checkbox" id="not2" name="term_cont">
+				¿Acepta los ternimos y condiciones?:</label><br>
+		</fieldset>
+		<fieldset>
+			<label for="comentarios">¿Desea realizar algun comentario?:</label>
+			<textarea name="comentarios" rows="5" cols="40"></textarea>
+		</fieldset>
+		<input type="submit" value="Submit">
+	</fieldset>
 </form>
-
-<!--
-//form_insert?fname=Vito&lname=Barrio
--->
-
-
-
-
-
-
-<!--div>
-	<input id="visor" type="text">
-</div>
-<div>
-	<button class="botones" type="button" value="1">1</button>
-	<button class="botones" type="button" value="2">2</button>
-	<button class="botones" type="button" value="3">3</button>
-	<button class="botones" type="button" value="+">+</button>
-</div>
-<div>
-	<button class="botones" type="button" value="4">4</button>
-	<button class="botones" type="button" value="5">5</button>
-	<button class="botones" type="button" value="6">6</button>
-	<button class="botones" type="button" value="-">-</button>
-</div>
-<div>
-	<button class="botones" type="button" value="7">7</button>
-	<button class="botones" type="button" value="8">8</button>
-	<button class="botones" type="button" value="9">9</button>
-	<button class="limpiar" type="button" value="limpiar">Limpiar</button>
-</div>
-<div>
-	<button type="button" value="*">*</button>
-	<button class="botones" type="button" value="0">0</button>
-	<button type="button" value="#">#</button>
-	<button class="calcular" type="button">=</button>
-</div-->
-
-
-<!--div class="cuadrado_test_hover" id="cua_test_hover">
-</div>
-
-<div class="cuadrado_test_tamano" id="cua_test_tamano">
-</div>
-
-<div class="paleta">
-
-	<div class="cuadrado1">
-		<div class="cuadrado2">
-			<div id="cua_3" class="cuadrado3"></div>
-		</div>
-	</div>
-
-</div>
-
-<div class="contenedor">
-
-	<div class="cuadrado color_amarillo">
-		<div class="fontsize20 titulo">
-			cuadrado 1
-		</div>
-		<div class="fontsize20 bodytext">
-			textotextotextotextotextotextotextotexto
-		</div>
-	</div>
-
-	<div class="cuadrado color_azul"></div>
-
-	<div id="C3" class="cuadrado"></div>
-
-</div>
-
-<img src="https://www.masgamers.com/wp-content/uploads/2019/04/logo-age-of-empires-2-definitive-edition-825x478.png" alt="logo age of empire"/>
-
-<h1>
-	Partidas Ganadas en TG
-</h1>
-<table>
-	<tr>
-		<th>Name de steam</th>
-		<th>win-lose</th>
-		<th>win%</th>
-	</tr>
-	<tr>
-		<td>Tosky</td>
-		<td>151-178</td>
-		<td>46%</td>
-	</tr>
-	<tr>
-		<td>Tajik</td>
-		<td>634-605</td>
-		<td>51%</td>
-	</tr>
-	<tr>
-		<td>Ikki</td>
-		<td>232-310</td>
-		<td>43%</td>
-	</tr>
-	<tr>
-		<td>Sikor</td>
-		<td>122-156</td>
-		<td>44%</td>
-	</tr>
-	<tr>
-		<td>El GuAnAcO</td>
-		<td>224-356</td>
-		<td>356</td>
-	</tr>
-	<tr>
-		<td>El pepe</td>
-		<td>69-93</td>
-		<td>43%</td>
-	</tr>
-</table-->
