@@ -189,13 +189,18 @@ class BasicTestController
         print_r($pages);
         print('</pre>');
         die();*/
+        if (isset($_GET["page"])) {
+            $pagina_requerida = $_GET["page"];
+        } else {
+            $pagina_requerida = 1;
+        }
 
-        $pagina_requerida = $_GET["page"];
-        $offset = ((int)$pagina_requerida ) * 10;
-        print('<pre>');
+
+        $offset = ((int)$pagina_requerida -1)*10;
+        /*print('<pre>');
         print_r($pagina_requerida);
         print('</pre>');
-        die();
+        die();*/
 
         $query = "SELECT * FROM drupal8.inserts limit 10 offset $offset;";
         $listado = $database->query($query)->fetchAll();
@@ -238,4 +243,24 @@ class BasicTestController
         return [
             '#theme' => 'list_page',
             '#vars' => $vars
+
+
+
+
+
         ];*/
+
+       /* $pagina_requerida = $_GET["page"];
+        $offset = ((int)$pagina_requerida ) * 10;
+        print('<pre>');
+        print_r($pagina_requerida);
+        print('</pre>');
+        die();
+=======
+        if (isset($_GET["page"])) {
+            $pagina_requerida = $_GET["page"];
+        } else {
+            $pagina_requerida = 1;
+        }
+
+        $offset = ((int)$pagina_requerida - 1) * 10;*/
