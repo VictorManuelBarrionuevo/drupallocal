@@ -1,6 +1,6 @@
 name: drupallocal
 recipe: drupal8
 config:
-  drush: "*"
+  drush: '*'
   webroot: .
   xdebug: true
