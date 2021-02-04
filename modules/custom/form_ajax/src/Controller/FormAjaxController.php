@@ -23,12 +23,18 @@ class FormAjaxController
      */
     public function add_new_form()
     {
-        
-        $paises= "hola";
 
+        /*$nombre = $_POST["nombre"];
+        $apellido = $_POST["apellido"];
+
+        $vars = [];
+        $vars["nombre"] = $nombre;
+        $vars["apellido"] = $apellido;*/
+      
+        $vars = $_REQUEST["nombre"]." ".$_REQUEST["apellido"];
         return [
             '#theme' => 'form_ajax',
-            '#vars' =>$paises
+            '#vars' =>$vars
         ];
     }
     
