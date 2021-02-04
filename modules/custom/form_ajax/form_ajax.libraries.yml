@@ -1,0 +1,9 @@
+form-ajax-library:
+  version: 1.x
+  css:
+    theme:
+      css/form_ajax.css: {}
+  js:
+    js/form_ajax.js: {}
+  dependencies:
+  - core/jquery
