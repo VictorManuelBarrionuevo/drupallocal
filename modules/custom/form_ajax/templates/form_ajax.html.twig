@@ -6,9 +6,20 @@
 		<input type="text" placeholder="Escribe tu apellido" name="apellido" required autofocus title="Ingresa tu apellido porfavor">
 	</fieldset>
 
-	<input type="submit" id="btnEnviar" name="btnEnviar" value="Enviar formulario">
+	<input type="submit" id="button_send" name="button_send" value="Enviar formulario">
 </form>
 
 
-<p> {{vars}} </p>
+<table>
+	<tr style="background-color:#4CAF50">
+		<th>Nombre</th>
+		<th>Apellido</th>
+	</tr>
+	{% for var in vars %}
+		<tr>
+			<td>{{ var.nombre }}</td>
+			<td>{{ var.apellido }}</td>
+		</tr>
 
+	{% endfor %}
+</table>

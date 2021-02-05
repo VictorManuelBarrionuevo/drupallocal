@@ -1,42 +1,30 @@
 $(document).ready(function () {
-    $("#formulario").bind("submit", function () {
-        // Capturamnos el boton de envío
-        var btnEnviar = $("#btnEnviar");
+    $("#formulario").bind("submit", function () { //la funcion blind es parecida al "on", le pega al boton submit y dispara una funcion
+        var button_send = $("#button_send");
         $.ajax({
-            type: $(this).attr("method"),
-            url: $(this).attr("action"),
-            data: $(this).serialize(),
+            type: $(this).attr("method"),//le pegamos al metodo  post
+            url: $(this).attr("action"),//le pegamos a la accion, en este caso queda en el lugar
+            data: $(this).serialize(),//no lo entendi mucho, ya lo entendi es para serializr la info
             beforeSend: function () {
-                /*
-                * Esta función se ejecuta durante el envió de la petición al
-                * servidor.
-                * */
                 // btnEnviar.text("Enviando"); Para button 
-                btnEnviar.val("Enviando"); // Para input de tipo button
-                btnEnviar.attr("disabled", "disabled");
+                button_send.val("Sending"); // Para input de tipo button
+                button_send.attr("disabled", "disabled");
             },
             complete: function (data) {
-                /*
-                * Se ejecuta al termino de la petición
-                * */
-                btnEnviar.val("Enviar formulario");
-                btnEnviar.removeAttr("disabled");
+                //Se ejecuta al termino de la petición
+                button_send.val("Send form");
+                button_send.removeAttr("disabled");
             },
             success: function (data) {
-                /*
-                * Se ejecuta cuando termina la petición y esta ha sido
-                * correcta
-                * */
-                $(".respuesta").html(data);
+                //Se ejecuta cuando termina la petición y esta ha sido correcta
+                $(".answer").html(data);
             },
             error: function (data) {
-                /*
-                * Se ejecuta si la peticón ha sido erronea
-                * */
-                alert("Problemas al tratar de enviar el formulario");
+                //Se ejecuta si la peticón ha sido erronea
+                alert("Error trying to submit the form");
             }
         });
-        // Nos permite cancelar el envio del formulario
+        // Nos permite cancelar el envio del formulario, no entiendo porque
         return false;
     });
 });
