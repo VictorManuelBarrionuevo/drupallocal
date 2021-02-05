@@ -1,3 +1,4 @@
+(function ($) {
 $(document).ready(function () {
     $("#formulario").bind("submit", function () { //la funcion blind es parecida al "on", le pega al boton submit y dispara una funcion
         var button_send = $("#button_send");
@@ -28,3 +29,4 @@ $(document).ready(function () {
         return false;
     });
 });
+})(jQuery);
