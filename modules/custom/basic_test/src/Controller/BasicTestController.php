@@ -53,6 +53,87 @@ class BasicTestController
         } else {
             $errores[] = "El campo Apellido es requerido";
         }
+        if (isset($_GET['nacimiento']) && $_GET['nacimiento'] != '') {
+            $nacimiento = $_GET['nacimiento'];
+        } else {
+            $errores[] = "El campo Nacimiento es requerido";
+        }
+        if (isset($_GET['dni']) && $_GET['dni'] != '') {
+            $dni = $_GET['dni'];
+        } else {
+            $errores[] = "El campo D.N.I es requerido";
+        }
+        if (isset($_GET['cuit']) && $_GET['cuit'] != '') {
+            $cuit = $_GET['cuit'];
+        } else {
+            $errores[] = "El campo Numero de CUIT es requerido";
+        }
+        if (isset($_GET['estado_civil']) && $_GET['estado_civil'] != '') {
+            $estado_civil = $_GET['estado_civil'];
+        } else {
+            $errores[] = "El campo Estado Civil es requerido";
+        }
+        if (isset($_GET['hijos']) && $_GET['hijos'] != '') {
+            $hijos = $_GET['hijos'];
+        } else {
+            $errores[] = "El campo Hijos es requerido";
+        }
+        if (isset($_GET['genero']) && $_GET['genero'] != '') {
+            $genero = $_GET['genero'];
+        } else {
+            $errores[] = "El campo Genero es requerido";
+        }
+        if (isset($_GET['pais']) && $_GET['pais'] != '') {
+            $pais = $_GET['pais'];
+        } else {
+            $errores[] = "El campo Pais es requerido";
+        }
+        if (isset($_GET['provincia']) && $_GET['provincia'] != '') {
+            $provincia = $_GET['provincia'];
+        } else {
+            $errores[] = "El campo Provincia es requerido";
+        }
+        if (isset($_GET['localidad']) && $_GET['localidad'] != '') {
+            $localidad = $_GET['localidad'];
+        } else {
+            $errores[] = "El campo Localidad es requerido";
+        }
+        if (isset($_GET['calle']) && $_GET['calle'] != '') {
+            $calle = $_GET['calle'];
+        } else {
+            $errores[] = "El campo Calle es requerido";
+        }
+        if (isset($_GET['numero']) && $_GET['numero'] != '') {
+            $numero = $_GET['numero'];
+        } else {
+            $errores[] = "El campo Numero es requerido";
+        }
+        if (isset($_GET['piso']) && $_GET['piso'] != '') {
+            $piso = $_GET['piso'];
+        } else {
+            $errores[] = "El campo Piso es requerido";
+        }
+        if (isset($_GET['codigo_postal']) && $_GET['codigo_postal'] != '') {
+            $codigo_postal = $_GET['codigo_postal'];
+        } else {
+            $errores[] = "El campo Codigo Postal es requerido";
+        }
+        if (isset($_GET['email']) && $_GET['email'] != '') {
+            $email = $_GET['email'];
+        } else {
+            $errores[] = "El campo Direccion de Email es requerido";
+        }
+        if (isset($_GET['telefono_celular']) && $_GET['telefono_celular'] != '') {
+            $telefono_celular = $_GET['telefono_celular'];
+        } else {
+            $errores[] = "El campo Numero de Celular es requerido";
+        }
+        if (isset($_GET['telefono_fijo']) && $_GET['telefono_fijo'] != '') {
+            $telefono_fijo = $_GET['telefono_fijo'];
+        } else {
+            $errores[] = "El campo Numero de Telefono Fijo es requerido";
+        }
+
 
         if (!empty($errores)) {
             foreach ($errores as $error) {
@@ -61,7 +142,8 @@ class BasicTestController
             return new RedirectResponse(\Drupal::url('basic_test.add_new'));
         }
 
-        $query = "INSERT INTO inserts (`nombre`, `apellido`) VALUES ('$nombre', '$apellido');";
+        $query = "INSERT INTO inserts (`nombre`, `apellido`, `nacimiento`, `dni`, `cuit`, `estado_civil`, `hijos`, `genero`, `pais`, `provincia`, `localidad`, `calle` ,`numero`, `piso`, `codigo_postal`, `email`, `telefono_celular`, `telefono_fijo`) 
+        VALUES ('$nombre', '$apellido', '$nacimiento', '$dni', '$cuit', '$estado_civil', '$hijos', '$genero', '$pais', '$provincia', '$localidad', '$calle', '$numero', '$piso', '$codigo_postal', '$email', '$telefono_celular', '$telefono_fijo');";
         $database->query($query);
 
         $texto = "El usuario $nombre $apellido se ha registrado.";

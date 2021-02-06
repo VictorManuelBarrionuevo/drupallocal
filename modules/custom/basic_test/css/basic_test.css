@@ -111,8 +111,24 @@ table {
   padding: 20px;
 }
 
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+}
 
 
-
-
-
+.radio-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: 400;
+  vertical-align: middle;
+  cursor: pointer;
+}
+  
+form fieldset {
+    width: 155px;
+}
