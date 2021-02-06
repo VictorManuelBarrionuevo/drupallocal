@@ -26,7 +26,7 @@ $(document).ready(function () {
             }
         });
         // Nos permite cancelar el envio del formulario, no entiendo porque
-        return false;
+        //return false;
     });
 });
 })(jQuery);

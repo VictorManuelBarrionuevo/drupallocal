@@ -23,21 +23,31 @@ class FormAjaxController
      */
     public function add_new_form()
     {
+        $fail_request = [];
         $database = \Drupal::database();
 
-        $nombre = $_REQUEST['nombre'];
-        $apellido = $_REQUEST['apellido'];
+        if (isset($_REQUEST['nombre'])) {
+            $nombre = $_REQUEST['nombre'];
+        } else {
+            $fail_request = "fail_1";
+        }
+        if (isset($_REQUEST['apellido'])) {
+            $apellido =  $_REQUEST['apellido'];
+        } else {
+            $fail_request = "fail_2";
+        }
 
-        $query_insert = "INSERT INTO ajax_inserts (`nombre`, `apellido`) VALUES ('$nombre', '$apellido');";
-        $database->query($query_insert);
+
+        if (empty($fail_request)) {
+            $query_insert = "INSERT INTO ajax_inserts (`nombre`, `apellido`) VALUES ('$nombre', '$apellido');";
+            $database->query($query_insert);
+            $exito = "Usuario " . $nombre . " " . $apellido . " creado exitosamente";
+            \Drupal::messenger()->addMessage(($exito), 'status');
+        }
 
         $query_get = "SELECT * FROM drupal8.ajax_inserts;";
         $list = $database->query($query_get)->fetchAll();
-        /*$vars = [];
-        $vars["nombre"] = $nombre;
-        $vars["apellido"] = $apellido;
-      
-        $vars = $_REQUEST["nombre"]." ".$_REQUEST["apellido"];*/
+
         return [
             '#theme' => 'form_ajax',
             '#vars' => $list
