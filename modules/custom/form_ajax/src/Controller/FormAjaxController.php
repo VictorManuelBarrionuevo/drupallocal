@@ -56,7 +56,7 @@ class FormAjaxController
             $database->query($query_insert);
             
         }
-
+// tengo que meter todo en un controler y usar el json response para en viar la data al ajax y desde ahi poder procesarla, sacar el redirectresponse, y coopiar el codigo  del js, tambien editar el tiwg
         return new RedirectResponse(\Drupal::url('form_ajax.add_new_form'));
     }
 
