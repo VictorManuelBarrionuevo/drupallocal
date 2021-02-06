@@ -4,12 +4,23 @@
 </div>
 
 <div class="form_list">
-	<ol>
+	<table>
+		<tr>
+			<th>IDENTIFICADOR</th>
+			<th>NOMBRE</th>
+			<th>ACCIONES</th>
+		</tr>
 		{% for var in vars.listado %}
-			<li>{{ var.nombre }}
-				{{ var.apellido }}</li>
+			<tr>
+				<td>{{ var.id }}</td>
+				<td><a href="">{{ var.nombre }} {{ var.apellido }}</a></td>
+				<td>
+				<a href="">EDITAT</a>
+				<a href="">DELETE</a> 
+				</td>
+			</tr>
 		{% endfor %}
-	</ol>
+	</table>
 </div>
 
 {% for page in vars.pages %}
