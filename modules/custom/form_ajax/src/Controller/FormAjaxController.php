@@ -23,7 +23,20 @@ class FormAjaxController
      */
     public function add_new_form()
     {
-        $fail_request = [];
+        $database = \Drupal::database();
+
+        $query_get = "SELECT * FROM drupal8.ajax_inserts;";
+        $list = $database->query($query_get)->fetchAll();
+
+        return [
+            '#theme' => 'form_ajax',
+            '#vars' => $list
+        ];
+    }
+
+    public function save_new_form()
+     {
+         $fail_request = [];
         $database = \Drupal::database();
 
         if (isset($_REQUEST['nombre'])) {
@@ -41,16 +54,13 @@ class FormAjaxController
         if (empty($fail_request)) {
             $query_insert = "INSERT INTO ajax_inserts (`nombre`, `apellido`) VALUES ('$nombre', '$apellido');";
             $database->query($query_insert);
-            $exito = "Usuario " . $nombre . " " . $apellido . " creado exitosamente";
-            \Drupal::messenger()->addMessage(($exito), 'status');
+            
         }
 
-        $query_get = "SELECT * FROM drupal8.ajax_inserts;";
-        $list = $database->query($query_get)->fetchAll();
-
-        return [
-            '#theme' => 'form_ajax',
-            '#vars' => $list
-        ];
+        return new RedirectResponse(\Drupal::url('form_ajax.add_new_form'));
     }
+
+
+
+
 }

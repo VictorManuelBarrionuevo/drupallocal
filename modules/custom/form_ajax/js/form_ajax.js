@@ -19,6 +19,8 @@ $(document).ready(function () {
             success: function (data) {
                 //Se ejecuta cuando termina la petición y esta ha sido correcta
                 $(".answer").html(data);
+                alert("Succes");
+
             },
             error: function (data) {
                 //Se ejecuta si la peticón ha sido erronea
@@ -26,7 +28,7 @@ $(document).ready(function () {
             }
         });
         // Nos permite cancelar el envio del formulario, no entiendo porque
-        //return false;
+        return false;
     });
 });
 })(jQuery);
