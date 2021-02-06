@@ -1,0 +1,25 @@
+{#{ dump(vars) }#}
+<form id="formulario" action="/save_new_form" method="post">
+
+	<fieldset style="margin-right: 900px;">
+		<input type="text" placeholder="Escribe tu nombre" name="nombre" required autofocus title="Ingresa tu nombre porfavor">
+		<input type="text" placeholder="Escribe tu apellido" name="apellido" required autofocus title="Ingresa tu apellido porfavor">
+	</fieldset>
+
+	<input type="submit" id="button_send" name="button_send" value="Enviar formulario">
+</form>
+
+
+<table>
+	<tr style="background-color:#4CAF50">
+		<th>Nombre</th>
+		<th>Apellido</th>
+	</tr>
+	{% for var in vars %}
+		<tr>
+			<td>{{ var.nombre }}</td>
+			<td>{{ var.apellido }}</td>
+		</tr>
+
+	{% endfor %}
+</table>
