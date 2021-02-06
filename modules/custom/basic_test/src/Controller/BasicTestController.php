@@ -214,6 +214,19 @@ class BasicTestController
             'method' => 'GET',
         ]);
     }
+
+    public function delete_users($id){
+        //recibir un id del usuario que quiero borrar
+        //ir a la base de datos y borrarlo
+        $database = \Drupal::database();
+        $query_delete = "DELETE FROM inserts WHERE id = $id";
+        $database->query($query_delete);
+        //responder con el mensaje que todo salio ok
+        //tenemos que olver a la pagina que ya estaba y mostrar el mensaje
+
+
+
+    }
 }
 
 
