@@ -1,0 +1,15 @@
+form_ajax.add_new_form:
+  path: '/add_new_form'
+  defaults:
+    _controller: '\Drupal\form_ajax\Controller\FormAjaxController::add_new_form'
+    _title: 'First Page'
+  requirements:
+    _permission: 'access content'
+form_ajax.save_new_form:
+  path: '/save_new_form'
+  defaults:
+    _controller: '\Drupal\form_ajax\Controller\FormAjaxController::save_new_form'
+    _title: 'Save Page'
+  requirements:
+    _permission: 'access content'
+

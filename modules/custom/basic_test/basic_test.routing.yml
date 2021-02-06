@@ -29,3 +29,13 @@ basic_test.get_provincias:
     _title: 'get provincias'
   requirements:
     _permission: 'access content'
+
+basic_test.delete_users:
+  path: '/delete_users/{id}'
+  defaults:
+    _controller: '\Drupal\basic_test\Controller\BasicTestController::delete_users'
+    _title: 'delete users'
+  requirements:
+    _permission: 'access content'
+
+    

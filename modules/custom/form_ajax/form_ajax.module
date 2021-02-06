@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Contains form_ajax.module.
+ */
+
+
+function form_ajax_page_attachments(array &$attachments)
+{
+    $path = \Drupal::service('path.current')->getPath();
+    if ($path == "/add_new_form" || $path == "/save_new_form") {
+        $attachments['#attached']['library'][] = 'form_ajax/form-ajax-library';
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function form_ajax_theme($existing, $type, $theme, $path)
+{
+    $themes['form_ajax'] = [
+        'template' => 'form_ajax',
+        'variables' => array('vars' => NULL),
+    ];
+
+
+    return $themes;
+}
