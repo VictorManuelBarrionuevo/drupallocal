@@ -8,7 +8,10 @@
 
 function form_ajax_page_attachments(array &$attachments)
 {
-    $attachments['#attached']['library'][] = 'form_ajax/form-ajax-library';
+    $path = \Drupal::service('path.current')->getPath();
+    if ($path == "/add_new_form" || $path == "/save_new_form") {
+        $attachments['#attached']['library'][] = 'form_ajax/form-ajax-library';
+    }
 }
 
 /**
