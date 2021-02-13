@@ -4,6 +4,8 @@
 	<fieldset style="margin-right: 900px;">
 		<input type="text" placeholder="Escribe tu nombre" name="nombre" required autofocus title="Ingresa tu nombre porfavor">
 		<input type="text" placeholder="Escribe tu apellido" name="apellido" required autofocus title="Ingresa tu apellido porfavor">
+		<input type="text" placeholder="Escribe tu nombre de usuario" name="usuario" required autofocus title="Ingresa tu usuario porfavor">
+		<input type="email" placeholder="Escribe tu email" name="email" required autofocus title="Ingresa tu email porfavor">
 	</fieldset>
 
 	<input type="submit" id="button_send" name="button_send" value="Enviar formulario">
@@ -14,9 +16,10 @@
 	<tr style="background-color:#4CAF50">
 		<th>Nombre</th>
 		<th>Apellido</th>
+		<th>Usuario</th>
+		<th>Email</th>
 	</tr>
 </table>
-
 
 
 <table id="table_body">
@@ -24,6 +27,8 @@
 		<tr>
 			<td>{{ var.nombre }}</td>
 			<td>{{ var.apellido }}</td>
+			<td>{{ var.usuario }}</td>
+			<td>{{ var.email }}</td>
 		</tr>
 
 	{% endfor %}

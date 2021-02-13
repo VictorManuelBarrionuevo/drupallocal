@@ -36,7 +36,8 @@ class FormAjaxController
 
     public function save_new_form()
      {
-         $fail_request = [];
+
+        $fail_request = [];
         $database = \Drupal::database();
 
         if (isset($_REQUEST['nombre'])) {
@@ -49,12 +50,33 @@ class FormAjaxController
         } else {
             $fail_request = "fail_2";
         }
+        if (isset($_REQUEST['usuario'])) {
+            $usuario = $_REQUEST['usuario'];
+        } else {
+            $fail_request = "fail_3";
+        }
+        if (isset($_REQUEST['email'])) {
+            $email =  $_REQUEST['email'];
+        } else {
+            $fail_request = "fail_4";
+        }
 
 
         if (empty($fail_request)) {
-            $query_insert = "INSERT INTO ajax_inserts (`nombre`, `apellido`) VALUES ('$nombre', '$apellido');";
-            $database->query($query_insert);
-            
+            if(!empty($_POST["nombre"])) {
+                $query = "SELECT * FROM ajax_inserts WHERE usuario='" . $_POST["usuario"] . "'";
+                $user_count = $database->query($query)->fetch();
+                $query_email = "SELECT * FROM ajax_inserts WHERE email='" . $_POST["email"] . "'";
+                $email_count = $database->query($query_email)->fetch();
+                if($user_count || $email_count >0) {
+                    $fail="fatalerror";
+                    print_r($fail);
+                   
+                }else{
+                    $query_insert = "INSERT INTO ajax_inserts (`nombre`, `apellido`, `usuario`,`email`) VALUES ('$nombre', '$apellido', '$usuario', '$email');";
+                    $database->query($query_insert);
+                }
+              }
         }
 
         $database = \Drupal::database();
