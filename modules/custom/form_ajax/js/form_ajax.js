@@ -33,6 +33,7 @@
 
                     });
                     $("#table_body").html(listado);
+                    $('#formulario')[0].reset();
 
 
                 },
